@@ -50,6 +50,18 @@ body {
   margin: 0;
 }
 
+html { scroll-behavior: smooth; }
+a { color: inherit; text-decoration: none; }
+.eyebrow { color: var(--tag-primary); font-size: .7rem; font-weight: 900; letter-spacing: .16em; text-align: center; text-transform: uppercase; }
+.section-title { color: var(--tag-secondary); font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 900; line-height: 1.16; margin-top: .75rem; text-align: center; }
+.section-copy { color: var(--tag-neutral-500); font-size: .875rem; line-height: 1.75; margin: .75rem auto 0; max-width: 42rem; text-align: center; }
+.program-card { align-items: flex-start; background: white; border: 1px solid var(--tag-neutral-200); border-radius: .5rem; display: grid; gap: 1.25rem; grid-template-columns: auto 1fr; padding: 2rem; }
+.program-mark { border-radius: 999px; display: grid; font-size: .8rem; font-weight: 900; height: 2.5rem; place-items: center; width: 2.5rem; }
+.testimonial { background: var(--tag-neutral); border: 1px solid var(--tag-neutral-200); border-radius: .5rem; padding: 2rem; }
+footer a { color: var(--tag-neutral-500); display: block; font-size: .75rem; margin-top: .7rem; }
+.footer-title { color: var(--tag-secondary); font-size: .75rem; font-weight: 900; text-transform: uppercase; }
+@media (max-width: 640px) { .program-card { grid-template-columns: 1fr; padding: 1.5rem; } }
+
 button,
 input {
   font: inherit;

@@ -1,275 +1,72 @@
-const colors = [
-  {
-    name: "Primary",
-    hex: "#2563EB",
-    className: "bg-[var(--tag-primary)]",
-    swatches: [
-      "#061633",
-      "#08245c",
-      "#0d388e",
-      "#1d4ed8",
-      "#2563eb",
-      "#60a5fa",
-      "#93c5fd",
-      "#bfdbfe",
-      "#dbeafe",
-      "#eff6ff",
-    ],
-  },
-  {
-    name: "Secondary",
-    hex: "#0F172A",
-    className: "bg-[var(--tag-secondary)]",
-    swatches: [
-      "#020617",
-      "#0f172a",
-      "#1e293b",
-      "#334155",
-      "#475569",
-      "#64748b",
-      "#94a3b8",
-      "#cbd5e1",
-      "#e2e8f0",
-      "#f8fafc",
-    ],
-  },
-  {
-    name: "Tertiary",
-    hex: "#F59E0B",
-    className: "bg-[var(--tag-tertiary)]",
-    swatches: [
-      "#180c00",
-      "#3b2200",
-      "#713f00",
-      "#a16207",
-      "#d97706",
-      "#f59e0b",
-      "#fbbf24",
-      "#fed7aa",
-      "#ffedd5",
-      "#fff7ed",
-    ],
-  },
-  {
-    name: "Neutral",
-    hex: "#F8FAFC",
-    className: "bg-[var(--tag-neutral)] text-[var(--tag-secondary)]",
-    swatches: [
-      "#020617",
-      "#1e293b",
-      "#334155",
-      "#475569",
-      "#64748b",
-      "#94a3b8",
-      "#cbd5e1",
-      "#e2e8f0",
-      "#f1f5f9",
-      "#f8fafc",
-    ],
-  },
+import Image from "next/image";
+
+const impact = [
+  ["500+", "Young people reached", "Transformed through cohorts and camps"],
+  ["20+", "Executive mentors", "Industry leaders and professionals"],
+  ["10+", "Partner communities", "Schools, churches and youth networks"],
+  ["4", "Global countries", "Active international hubs and chapters"],
 ];
 
-const principles = ["Christ-centered", "Holistic", "Mentored", "Global-ready"];
+const pillars = [
+  ["01", "Spiritual", "Discovering identity, purpose, and confidence rooted in Christ."],
+  ["02", "Educational", "Access to academic resources, scholarships, and lifelong learning."],
+  ["03", "Social & Leadership", "Building communication, healthy relationships, and civic awareness."],
+  ["04", "Personal Development", "Cultivating resilience, emotional intelligence, and self-mastery."],
+  ["05", "Career & Global", "Exploring work, enterprise, service, and a broader global perspective."],
+];
+
+const mentors = [
+  ["Dr. Eliana Boateng", "Youth Development Educator", "0%"],
+  ["Marcus Chen", "Technology & Innovation Mentor", "33.333%"],
+  ["Sarah Jenkins, MD", "Health & Purpose Mentor", "66.666%"],
+  ["David Owusu", "Leadership & Enterprise Coach", "100%"],
+];
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[var(--tag-neutral)] p-4 text-[var(--tag-secondary)] sm:p-6 lg:p-8">
-      <section className="mx-auto grid max-w-7xl gap-4 lg:grid-cols-[minmax(220px,0.82fr)_1.12fr_1.12fr_1.12fr]">
-        <div className="flex flex-col gap-4">
-          {colors.map((color) => (
-            <article
-              className="overflow-hidden rounded-lg bg-white shadow-[0_18px_60px_rgba(15,23,42,0.08)]"
-              key={color.name}
-            >
-              <div
-                className={`${color.className} flex min-h-24 items-start justify-between p-5 text-sm font-bold text-white`}
-              >
-                <span>{color.name}</span>
-                <span>{color.hex}</span>
-              </div>
-              <div className="grid h-14 grid-cols-10">
-                {color.swatches.map((swatch) => (
-                  <span key={swatch} style={{ backgroundColor: swatch }} />
-                ))}
-              </div>
-            </article>
-          ))}
-        </div>
-
-        <article className="rounded-lg bg-white p-6 shadow-[0_18px_60px_rgba(15,23,42,0.08)] lg:col-span-2">
-          <div className="flex items-start justify-between gap-6 text-xs font-semibold text-[var(--tag-neutral-500)]">
-            <span>Headline</span>
-            <span>Plus Jakarta Sans</span>
-          </div>
-          <p className="mt-7 text-[clamp(4.5rem,13vw,9.5rem)] font-semibold leading-none text-[var(--tag-secondary)]">
-            Aa
-          </p>
-          <div className="mt-8 grid gap-3 sm:grid-cols-4">
-            {principles.map((principle) => (
-              <span
-                className="rounded-md bg-[var(--tag-neutral-100)] px-3 py-2 text-center text-xs font-bold text-[var(--tag-muted)]"
-                key={principle}
-              >
-                {principle}
-              </span>
-            ))}
-          </div>
-        </article>
-
-        <article className="rounded-lg bg-white p-6 shadow-[0_18px_60px_rgba(15,23,42,0.08)]">
-          <div className="flex flex-wrap gap-3">
-            <button className="h-11 rounded-md bg-[var(--tag-primary)] px-8 text-sm font-bold text-white shadow-[0_10px_24px_rgba(37,99,235,0.22)]">
-              Primary
-            </button>
-            <button className="h-11 rounded-md bg-[var(--tag-neutral-100)] px-8 text-sm font-bold text-[var(--tag-secondary)]">
-              Secondary
-            </button>
-            <button className="h-11 rounded-md bg-[var(--tag-secondary)] px-8 text-sm font-bold text-white">
-              Inverted
-            </button>
-            <button className="h-11 rounded-md border border-[var(--tag-secondary-700)] bg-white px-8 text-sm font-bold text-[var(--tag-secondary)]">
-              Outlined
-            </button>
-          </div>
-          <div className="mt-8 rounded-lg bg-[var(--tag-neutral-100)] p-4">
-            <p className="text-sm font-bold text-[var(--tag-secondary)]">
-              Beacon of hope
-            </p>
-            <p className="mt-2 text-sm leading-6 text-[var(--tag-muted)]">
-              Resources, opportunity, guidance, mentorship, and coaching for
-              teenagers and young adults.
-            </p>
-          </div>
-        </article>
-
-        <article className="rounded-lg bg-white p-6 shadow-[0_18px_60px_rgba(15,23,42,0.08)]">
-          <label
-            className="mb-3 block text-xs font-bold uppercase text-[var(--tag-neutral-500)]"
-            htmlFor="search"
-          >
-            Search field
-          </label>
-          <div className="flex h-12 items-center gap-3 rounded-md border border-[var(--tag-neutral-300)] bg-[var(--tag-neutral-100)] px-4 ring-[var(--ring)] focus-within:ring-4">
-            <span className="text-lg text-[var(--tag-neutral-500)]">O</span>
-            <input
-              className="w-full bg-transparent text-sm font-semibold text-[var(--tag-secondary)] outline-none placeholder:text-[var(--tag-neutral-500)]"
-              id="search"
-              placeholder="Search"
-              type="search"
-            />
-          </div>
-        </article>
-
-        <article className="rounded-lg bg-white p-6 shadow-[0_18px_60px_rgba(15,23,42,0.08)]">
-          <div className="flex items-start justify-between text-xs font-semibold text-[var(--tag-neutral-500)]">
-            <span>Body</span>
-            <span>Inter</span>
-          </div>
-          <p className="mt-6 text-[clamp(4rem,10vw,8rem)] font-medium leading-none text-[#464a5c]">
-            Aa
-          </p>
-        </article>
-
-        <article className="rounded-lg bg-white p-6 shadow-[0_18px_60px_rgba(15,23,42,0.08)]">
-          <div className="space-y-4 pt-10">
-            <span className="block h-2 w-4/5 rounded-full bg-[var(--tag-primary)]" />
-            <span className="block h-2 w-full rounded-full bg-[#555c72]" />
-            <span className="block h-2 w-3/5 rounded-full bg-[#7a4d00]" />
-          </div>
-        </article>
-
-        <article className="rounded-lg bg-white p-6 shadow-[0_18px_60px_rgba(15,23,42,0.08)]">
-          <nav
-            aria-label="Component preview"
-            className="mt-10 flex items-center justify-center gap-6 rounded-2xl bg-[var(--tag-neutral-100)] px-6 py-4 text-sm font-bold"
-          >
-            <span className="grid size-9 place-items-center rounded-full bg-[var(--tag-primary)] text-white">
-              H
-            </span>
-            <span className="text-[var(--tag-secondary)]">S</span>
-            <span className="text-[var(--tag-secondary)]">U</span>
+    <main className="overflow-hidden bg-white text-secondary">
+      <header className="absolute inset-x-0 top-0 z-20 border-b border-white/15 bg-white/95 text-secondary backdrop-blur">
+        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 lg:px-8">
+          <a className="text-xl font-black tracking-normal text-primary" href="#">TAG</a>
+          <nav aria-label="Main navigation" className="hidden items-center gap-7 text-sm font-semibold text-slate-600 md:flex">
+            <a className="text-primary" href="#home">Home</a><a href="#about">About</a><a href="#programs">Programs</a><a href="#mentors">Mentors</a><a href="#summit">Events</a><a href="#contact">Contact</a>
           </nav>
-        </article>
+          <a className="rounded-md bg-primary px-4 py-2.5 text-xs font-bold text-white transition hover:bg-blue-700" href="#programs">Join a Programme</a>
+        </div>
+      </header>
 
-        <article className="rounded-lg bg-white p-6 shadow-[0_18px_60px_rgba(15,23,42,0.08)]">
-          <div className="flex items-start justify-between text-xs font-semibold text-[var(--tag-neutral-500)]">
-            <span>Label</span>
-            <span>Inter</span>
+      <section id="home" className="relative min-h-[680px] pt-16 text-white lg:min-h-[740px]">
+        <Image alt="Young people learning together on a campus" className="object-cover" fill priority sizes="100vw" src="/images/tag-hero.png" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,6,23,.86)_0%,rgba(2,6,23,.58)_39%,rgba(2,6,23,.12)_72%,rgba(2,6,23,.04)_100%)]" />
+        <div className="relative mx-auto flex min-h-[616px] max-w-7xl items-center px-5 py-20 lg:min-h-[676px] lg:px-8">
+          <div className="max-w-2xl">
+            <p className="mb-5 text-xs font-black uppercase tracking-[.22em] text-amber-300">Faith. Purpose. Global Impact.</p>
+            <h1 className="text-5xl font-black leading-[1.03] tracking-normal sm:text-6xl lg:text-7xl">Empowering Young People to Dream, Grow & Lead</h1>
+            <p className="mt-6 max-w-xl text-base leading-7 text-slate-100 sm:text-lg">Equipping teenagers and young adults with faith, opportunity, mentorship, and the confidence to take their place on the global stage.</p>
+            <div className="mt-9 flex flex-wrap gap-3"><a className="rounded-md bg-tertiary px-5 py-3.5 text-sm font-black text-slate-950 transition hover:bg-amber-400" href="#programs">Explore Our Programmes</a><a className="rounded-md border border-white/70 bg-black/15 px-5 py-3.5 text-sm font-black text-white backdrop-blur transition hover:bg-white hover:text-secondary" href="#about">Discover TAG</a></div>
           </div>
-          <p className="mt-5 text-[clamp(3.5rem,9vw,7rem)] font-medium leading-none text-[#464a5c]">
-            Aa
-          </p>
-        </article>
-
-        <article className="rounded-lg bg-white p-6 shadow-[0_18px_60px_rgba(15,23,42,0.08)]">
-          <div className="flex min-h-28 items-center justify-center gap-4">
-            <button
-              aria-label="Edit"
-              className="grid size-12 place-items-center rounded-md bg-[#9a6500] text-sm font-bold text-white"
-            >
-              E
-            </button>
-            <button className="h-11 rounded-md bg-[var(--tag-primary)] px-6 text-sm font-bold text-white">
-              E&nbsp;&nbsp;Label
-            </button>
-          </div>
-        </article>
-
-        <article className="rounded-lg bg-white p-6 shadow-[0_18px_60px_rgba(15,23,42,0.08)] lg:col-span-2">
-          <div className="flex h-full min-h-28 items-center justify-center gap-3">
-            {[
-              ["M", "bg-[var(--tag-primary)]"],
-              ["G", "bg-[#475569]"],
-              ["T", "bg-[#7a4d00]"],
-              ["D", "bg-[#b91c1c]"],
-            ].map(([label, className]) => (
-              <button
-                aria-label={label}
-                className={`${className} grid size-10 place-items-center rounded-full text-xs font-black text-white`}
-                key={label}
-              >
-                {label}
-              </button>
-            ))}
-          </div>
-        </article>
-
-        <article className="rounded-lg bg-white p-6 shadow-[0_18px_60px_rgba(15,23,42,0.08)] lg:col-span-4">
-          <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
-            <div>
-              <p className="text-xs font-black uppercase text-[var(--tag-primary)]">
-                TAG design direction
-              </p>
-              <h1 className="mt-3 max-w-3xl text-4xl font-black leading-tight text-[var(--tag-secondary)] sm:text-5xl">
-                A warm, credible system for faith, growth, and opportunity.
-              </h1>
-              <p className="mt-5 max-w-2xl text-base leading-8 text-[var(--tag-muted)]">
-                The system balances spiritual conviction with educational
-                clarity: bold blue for trust and momentum, deep slate for
-                seriousness, amber for hope, and quiet neutrals for focus.
-              </p>
-            </div>
-            <div className="grid gap-3 sm:grid-cols-2">
-              {[
-                "Mentorship",
-                "Coaching",
-                "Education",
-                "Community",
-              ].map((item) => (
-                <div
-                  className="rounded-lg border border-[var(--tag-neutral-200)] bg-[var(--tag-neutral)] p-5"
-                  key={item}
-                >
-                  <p className="text-sm font-black text-[var(--tag-secondary)]">
-                    {item}
-                  </p>
-                  <span className="mt-5 block h-2 rounded-full bg-[var(--tag-primary)]" />
-                </div>
-              ))}
-            </div>
-          </div>
-        </article>
+        </div>
       </section>
+
+      <section id="about" className="bg-white px-5 py-20 text-center lg:px-8 lg:py-24">
+        <div className="mx-auto max-w-3xl"><span className="text-3xl font-serif text-primary">“</span><p className="mt-2 text-xl font-semibold leading-8 text-secondary sm:text-2xl">Every young person deserves the opportunity to dream beyond their circumstances.</p><p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-slate-500">Teens Academy Global exists to bridge the gap between potential and opportunity, creating safe spaces where young minds can thrive spiritually, academically, and socially.</p><a className="mt-7 inline-flex text-sm font-bold text-primary" href="#story">Our story →</a></div>
+      </section>
+
+      <section className="bg-slate-50 px-5 py-20 lg:px-8"><div className="mx-auto max-w-7xl text-center"><p className="eyebrow">Measurable impact</p><h2 className="section-title">Empowering Tomorrow&apos;s Trailblazers Today</h2><p className="section-copy">Bridging the gap between potential and opportunity across the UK, Africa, and beyond.</p><div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{impact.map(([value, label, copy]) => <article className="rounded-md border border-slate-200 bg-white px-5 py-7 shadow-[0_10px_30px_rgba(15,23,42,.04)]" key={label}><p className="text-4xl font-black text-primary">{value}</p><h3 className="mt-3 text-sm font-black">{label}</h3><p className="mt-2 text-xs leading-5 text-slate-500">{copy}</p></article>)}</div></div></section>
+
+      <section id="programs" className="px-5 py-20 lg:px-8 lg:py-24"><div className="mx-auto max-w-7xl text-center"><p className="eyebrow">Our development framework</p><h2 className="section-title">Holistic Pillars of Growth</h2><p className="section-copy">We nurture the complete individual, fostering spiritual integrity, intellectual vigor, and visionary leadership designed for real-world impact.</p><div className="mt-11 grid gap-4 text-left sm:grid-cols-2 lg:grid-cols-5">{pillars.map(([number, title, copy]) => <article className="group border-t-2 border-slate-200 bg-slate-50 px-5 py-7 transition hover:border-primary hover:bg-blue-50" key={title}><span className="grid size-9 place-items-center rounded-md bg-blue-100 text-xs font-black text-primary">{number}</span><h3 className="mt-6 text-base font-black">{title}</h3><p className="mt-3 min-h-24 text-xs leading-6 text-slate-500">{copy}</p><a className="mt-4 inline-flex text-xs font-black text-primary" href="#contact">Learn more →</a></article>)}</div></div></section>
+
+      <section className="bg-slate-50 px-5 py-20 lg:px-8 lg:py-24"><div className="mx-auto max-w-7xl text-center"><p className="eyebrow">Pathways to purpose</p><h2 className="section-title">Flagship Mentoring Hubs</h2><p className="section-copy">Dedicated, gender-tailored cohorts designed to meet the distinct developmental needs of young men and women.</p><div className="mt-11 grid gap-5 text-left lg:grid-cols-2"><article className="program-card"><span className="program-mark bg-blue-100 text-primary">B</span><div><p className="text-xs font-black uppercase text-primary">Boys mentoring hub</p><h3 className="mt-2 text-2xl font-black">Built for courage, character, and purpose.</h3><p className="mt-4 text-sm leading-7 text-slate-500">A structured year-round journey developing young men into confident, responsible, and purpose-driven leaders with high social impact.</p><a className="mt-6 inline-flex text-sm font-black text-primary" href="#contact">Explore Boys Hub →</a></div></article><article className="program-card"><span className="program-mark bg-amber-100 text-amber-700">G</span><div><p className="text-xs font-black uppercase text-amber-700">Girls mentorship hub</p><h3 className="mt-2 text-2xl font-black">Nurtured to lead with confidence.</h3><p className="mt-4 text-sm leading-7 text-slate-500">A dedicated community empowering young women with confidence, voice, purpose, and real-world life skills to lead courageously.</p><a className="mt-6 inline-flex text-sm font-black text-amber-700" href="#contact">Explore Girls Hub →</a></div></article></div></div></section>
+
+      <section id="mentors" className="px-5 py-20 lg:px-8 lg:py-24"><div className="mx-auto max-w-7xl"><div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between"><div><p className="eyebrow text-left">Direct access to excellence</p><h2 className="section-title text-left">Guidance From People Who Care</h2><p className="section-copy mx-0 text-left">Industry leaders, doctors, technologists, and executives dedicated to walking alongside ambitious youth.</p></div><a className="text-sm font-black text-primary" href="#contact">Meet all mentors →</a></div><div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{mentors.map(([name, role, position]) => <article className="overflow-hidden rounded-md border border-slate-200 bg-white" key={name}><div className="h-64 bg-[url('/images/tag-mentors.png')] bg-[length:400%_100%] bg-no-repeat" style={{ backgroundPosition: `${position} center` }} /><div className="p-5"><h3 className="font-black">{name}</h3><p className="mt-1 text-xs text-slate-500">{role}</p></div></article>)}</div></div></section>
+
+      <section id="summit" className="bg-slate-50 px-5 py-20 lg:px-8"><div className="relative mx-auto max-w-7xl overflow-hidden rounded-lg bg-primary px-7 py-12 text-white shadow-[0_18px_50px_rgba(37,99,235,.22)] sm:px-12 lg:px-16 lg:py-16"><div className="absolute -right-24 -top-32 size-96 rounded-full border-[70px] border-white/10" /><div className="relative max-w-3xl"><p className="text-xs font-black uppercase tracking-[.18em] text-amber-300">Upcoming flagship event</p><h2 className="mt-4 text-3xl font-black leading-tight sm:text-5xl">TAG Global Youth Summit 2025:<br />Unlocking Limitless Futures</h2><p className="mt-5 max-w-2xl text-sm leading-7 text-blue-100">A high-energy global gathering of future shapers and mentors, featuring workshops, innovation labs, and faith-building sessions.</p><div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-xs font-bold"><span>August 5–8, 2025</span><span>Lagos & London</span><span>150+ youth leaders</span></div><a className="mt-8 inline-flex rounded-md bg-tertiary px-5 py-3 text-sm font-black text-slate-950" href="#contact">Explore conference & workshops →</a></div></div></section>
+
+      <section className="px-5 py-20 lg:px-8 lg:py-24"><div className="mx-auto max-w-7xl text-center"><p className="eyebrow">Real stories, real impact</p><h2 className="section-title">Voices from Our Community</h2><p className="section-copy">Hear firsthand from the teenagers whose lives have pivoted and the parents who support their rise.</p><div className="mt-10 grid gap-5 text-left lg:grid-cols-2"><blockquote className="testimonial"><p className="text-amber-500">★★★★★</p><p className="mt-5 text-sm italic leading-7 text-slate-600">“TAG taught me that where I start doesn&apos;t determine where I finish. Having a dedicated mentor who believed in me, held me accountable, and prayed for my dreams completely changed my trajectory.”</p><footer className="mt-6 text-sm font-black">Daniel Okafor <span className="block text-xs font-normal text-slate-400">TAG Alum, Software Engineering Student</span></footer></blockquote><blockquote className="testimonial"><p className="text-amber-500">★★★★★</p><p className="mt-5 text-sm italic leading-7 text-slate-600">“As a parent, finding a structured, safe, Christ-centered space with real professional mentors has been an invaluable blessing. My daughter found her voice and learned a clear vision for her education.”</p><footer className="mt-6 text-sm font-black">Mrs. Adeyemi <span className="block text-xs font-normal text-slate-400">Parent, Girls Community</span></footer></blockquote></div></div></section>
+
+      <section className="bg-primary px-5 py-14 text-center text-white lg:px-8"><h2 className="mx-auto max-w-3xl text-3xl font-black leading-tight sm:text-4xl">Potential Should Never Be Limited By Circumstance</h2><div className="mt-7 flex flex-wrap justify-center gap-3"><a className="rounded-md bg-tertiary px-5 py-3 text-sm font-black text-slate-950" href="#programs">Join a Programme</a><a className="rounded-md border border-white/60 px-5 py-3 text-sm font-black" href="#contact">Become a Mentor</a></div></section>
+
+      <footer id="contact" className="bg-white px-5 py-12 lg:px-8"><div className="mx-auto grid max-w-7xl gap-10 sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1fr]"><div><p className="text-xl font-black text-primary">TAG</p><p className="mt-4 max-w-xs text-xs leading-6 text-slate-500">© 2025 Teens Academy Global.<br />Purposeful youth ready to lead by conviction.</p></div><div><p className="footer-title">Platform</p><a href="#home">Home</a><a href="#programs">Programmes</a><a href="#mentors">Mentors</a></div><div><p className="footer-title">Resources</p><a href="#about">Our Story</a><a href="#summit">Conferences</a><a href="#contact">Testimonials</a></div><div><p className="footer-title">Legal</p><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Safeguarding</a></div></div></footer>
     </main>
   );
 }
