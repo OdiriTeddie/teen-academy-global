@@ -29,7 +29,7 @@ export default function Home() {
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 lg:px-8">
           <a className="text-xl font-black tracking-normal text-primary" href="#">TAG</a>
           <nav aria-label="Main navigation" className="hidden items-center gap-7 text-sm font-semibold text-slate-600 md:flex">
-            <a className="text-primary" href="#home">Home</a><a href="#about">About</a><a href="#programs">Programs</a><a href="#mentors">Mentors</a><a href="#summit">Events</a><a href="#contact">Contact</a>
+            <a className="text-primary" href="#home">Home</a><a href="/about">About</a><a href="#programs">Programs</a><a href="#mentors">Mentors</a><a href="#summit">Events</a><a href="#contact">Contact</a>
           </nav>
           <a className="rounded-md bg-primary px-4 py-2.5 text-xs font-bold text-white transition hover:bg-blue-700" href="#programs">Join a Programme</a>
         </div>
