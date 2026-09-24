@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { SiteHeader } from "@/components/site-header";
 
 const impact = [
   ["500+", "Young people reached", "Transformed through cohorts and camps"],
@@ -25,15 +26,7 @@ const mentors = [
 export default function Home() {
   return (
     <main className="overflow-hidden bg-white text-secondary">
-      <header className="absolute inset-x-0 top-0 z-20 border-b border-white/15 bg-white/95 text-secondary backdrop-blur">
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 lg:px-8">
-          <a className="text-xl font-black tracking-normal text-primary" href="#">TAG</a>
-          <nav aria-label="Main navigation" className="hidden items-center gap-7 text-sm font-semibold text-slate-600 md:flex">
-            <a className="text-primary" href="#home">Home</a><a href="/about">About</a><a href="#programs">Programs</a><a href="#mentors">Mentors</a><a href="#summit">Events</a><a href="#contact">Contact</a>
-          </nav>
-          <a className="rounded-md bg-primary px-4 py-2.5 text-xs font-bold text-white transition hover:bg-blue-700" href="#programs">Join a Programme</a>
-        </div>
-      </header>
+      <SiteHeader active="home" overlay />
 
       <section id="home" className="relative min-h-[680px] pt-16 text-white lg:min-h-[740px]">
         <Image alt="Young people learning together on a campus" className="object-cover" fill priority sizes="100vw" src="/images/tag-hero.png" />

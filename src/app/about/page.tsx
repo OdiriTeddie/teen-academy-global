@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { SiteHeader } from "@/components/site-header";
 
 export const metadata: Metadata = {
   title: "About TAG | Teens Academy Global",
@@ -33,16 +34,12 @@ const pillars = [
 
 const card = "rounded-md border border-slate-200 bg-white p-6";
 
-function Header() {
-  return <header className="border-b border-slate-200 bg-white"><div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 lg:px-8"><Link className="text-xl font-black text-primary" href="/">TAG</Link><nav aria-label="Main navigation" className="hidden items-center gap-7 text-sm font-semibold text-slate-600 md:flex"><Link href="/">Home</Link><Link className="text-primary" href="/about">About</Link><Link href="/#programs">Programs</Link><Link href="/#mentors">Mentors</Link><Link href="/#summit">Events</Link><Link href="#contact">Contact</Link></nav><Link className="rounded-md bg-primary px-4 py-2.5 text-xs font-bold text-white" href="/#programs">Join a Programme</Link></div></header>;
-}
-
 function Heading({ eyebrow, title, copy }: { eyebrow: string; title: string; copy?: string }) {
   return <div className="mx-auto max-w-3xl text-center"><p className="eyebrow">{eyebrow}</p><h2 className="section-title">{title}</h2>{copy && <p className="section-copy">{copy}</p>}</div>;
 }
 
 export default function AboutPage() {
-  return <main className="bg-white text-secondary"><Header />
+  return <main className="bg-white text-secondary"><SiteHeader active="about" />
     <section className="relative overflow-hidden bg-slate-50 px-5 py-20 lg:px-8 lg:py-28">
       <div className="absolute inset-y-0 right-0 hidden w-[38%] bg-blue-50 lg:block" />
       <div className="relative mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-[1fr_.82fr]">
