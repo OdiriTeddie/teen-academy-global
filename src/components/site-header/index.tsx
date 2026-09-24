@@ -20,7 +20,7 @@ const navigation: Array<{ href: string; key: NavigationKey; label: string }> = [
   { href: "/mentors", key: "mentors", label: "Mentors" },
   { href: "/#programs", key: "programs", label: "Programs" },
   { href: "/training", key: "training", label: "Training" },
-  { href: "/#summit", key: "conferences", label: "Conferences" },
+  { href: "/conferences", key: "conferences", label: "Conferences" },
   { href: "/contact", key: "contact", label: "Contact" },
 ];
 
