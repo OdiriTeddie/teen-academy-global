@@ -1,15 +1,23 @@
 "use client";
 
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
-import { useEffect, useId, useState } from "react";
+import { Menu } from "lucide-react";
 import { BrandLogo } from "@/components/brand-logo";
+import { Button, buttonVariants } from "@/components/ui/button";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
 type NavigationKey =
   | "home"
   | "about"
   | "mentors"
-  | "programs"
   | "training"
   | "conferences"
   | "contact";
@@ -23,27 +31,12 @@ const navigation: Array<{ href: string; key: NavigationKey; label: string }> = [
   { href: "/", key: "home", label: "Home" },
   { href: "/about", key: "about", label: "About" },
   { href: "/mentors", key: "mentors", label: "Mentors" },
-  { href: "/#programs", key: "programs", label: "Programs" },
-  { href: "/training", key: "training", label: "Training" },
+  { href: "/training", key: "training", label: "Trainings" },
   { href: "/conferences", key: "conferences", label: "Conferences" },
   { href: "/contact", key: "contact", label: "Contact" },
 ];
 
 export function SiteHeader({ active, overlay = false }: SiteHeaderProps) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const mobileMenuId = useId();
-
-  useEffect(() => {
-    if (!isMenuOpen) return;
-
-    const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setIsMenuOpen(false);
-    };
-
-    window.addEventListener("keydown", closeOnEscape);
-    return () => window.removeEventListener("keydown", closeOnEscape);
-  }, [isMenuOpen]);
-
   return (
     <header
       className={`${overlay ? "absolute inset-x-0 top-0 z-20 border-white/15 bg-white/95 backdrop-blur" : "relative z-20 border-slate-200 bg-white"} border-b text-secondary`}
@@ -65,51 +58,65 @@ export function SiteHeader({ active, overlay = false }: SiteHeaderProps) {
           ))}
         </nav>
         <Link
-          className="hidden rounded-md bg-tertiary px-4 py-2.5 text-xs font-bold text-slate-950 transition hover:bg-amber-400 lg:block"
+          className={buttonVariants({ className: "hidden text-xs lg:inline-flex", variant: "accent" })}
           href="/#programs"
         >
           Join a Programme
         </Link>
-        <button
-          aria-controls={mobileMenuId}
-          aria-expanded={isMenuOpen}
-          aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
-          className="grid size-10 place-items-center rounded-md border border-slate-200 bg-white text-secondary transition hover:border-primary hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary lg:hidden"
-          onClick={() => setIsMenuOpen((open) => !open)}
-          type="button"
-        >
-          {isMenuOpen ? <X aria-hidden="true" size={21} /> : <Menu aria-hidden="true" size={21} />}
-        </button>
-      </div>
-
-      <div
-        className={`${isMenuOpen ? "grid" : "hidden"} absolute inset-x-0 top-full border-b border-slate-200 bg-white shadow-[0_18px_32px_rgba(15,23,42,0.12)] lg:hidden`}
-        id={mobileMenuId}
-      >
-        <nav aria-label="Mobile navigation" className="mx-auto grid w-full max-w-7xl gap-1 px-5 py-4">
-          {navigation.map((item) => (
-            <Link
-              aria-current={active === item.key ? "page" : undefined}
-              className={`flex min-h-11 items-center border-l-2 px-4 text-sm font-semibold transition ${
-                active === item.key
-                  ? "border-primary bg-blue-50 text-primary"
-                  : "border-transparent text-slate-700 hover:border-slate-300 hover:bg-slate-50"
-              }`}
-              href={item.href}
-              key={item.key}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {item.label}
-            </Link>
-          ))}
-          <Link
-            className="mt-3 flex min-h-12 items-center justify-center rounded-md bg-tertiary px-5 text-sm font-bold text-slate-950 transition hover:bg-amber-400"
-            href="/#programs"
-            onClick={() => setIsMenuOpen(false)}
+        <Sheet>
+          <SheetTrigger
+            render={
+              <Button
+                aria-label="Open navigation menu"
+                className="lg:hidden"
+                size="icon-lg"
+                type="button"
+                variant="outline"
+              />
+            }
           >
-            Join a Programme
-          </Link>
-        </nav>
+            <Menu aria-hidden="true" size={21} />
+          </SheetTrigger>
+          <SheetContent className="w-[min(88vw,24rem)] bg-white" side="right">
+            <SheetHeader className="border-b border-slate-200 pr-16">
+              <SheetTitle className="font-black text-secondary">Explore TAG</SheetTitle>
+              <SheetDescription>Navigate Teens Academy Global</SheetDescription>
+            </SheetHeader>
+            <nav aria-label="Mobile navigation" className="grid gap-1 px-5 py-5">
+              {navigation.map((item) => (
+                <SheetClose
+                  key={item.key}
+                  nativeButton={false}
+                  render={
+                    <Link
+                      aria-current={active === item.key ? "page" : undefined}
+                      className={`flex min-h-11 items-center border-l-2 px-4 text-sm font-semibold transition ${
+                        active === item.key
+                          ? "border-primary bg-blue-50 text-primary"
+                          : "border-transparent text-slate-700 hover:border-slate-300 hover:bg-slate-50"
+                      }`}
+                      href={item.href}
+                    />
+                  }
+                >
+                  {item.label}
+                </SheetClose>
+              ))}
+              <SheetClose
+                className="mt-3"
+                nativeButton={false}
+                render={
+                  <Link
+                    className={buttonVariants({ size: "xl", variant: "accent" })}
+                    href="/#programs"
+                  />
+                }
+              >
+                Join a Programme
+              </SheetClose>
+            </nav>
+          </SheetContent>
+        </Sheet>
       </div>
     </header>
   );
