@@ -1,44 +1,74 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
+import { ArrowRight, ShieldCheck } from "lucide-react";
+import { BrandLogo } from "@/components/brand-logo";
+import { MentorDirectory } from "@/components/mentor-directory";
 import { SiteHeader } from "@/components/site-header";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle2, ChevronDown, Search, Sparkles } from "lucide-react";
+import { buttonVariants } from "@/components/ui/button";
 
-export const metadata: Metadata = { title: "Mentors | Teens Academy Global", description: "Meet TAG's vetted global network of mentors and industry leaders." };
+export const metadata: Metadata = {
+  title: "Mentors | Teens Academy Global",
+  description: "Meet TAG's vetted global network of mentors and industry leaders.",
+};
 
-const mentors = [
-  ["Dr. Eliana Rostova", "Technology", "VP of Engineering, InnovateX", "London, UK", "Breaking barriers for underrepresented youth in AI and software systems.", "old", "0%"],
-  ["Marcus Chen", "Finance", "Managing Partner, Vertex Capital", "London & SG", "Equipping young leaders with financial literacy and ethical stewardship.", "old", "33.333%"],
-  ["Dr. Sarah Jenkins, MD", "Medicine", "Chief of Paediatric Surgery", "Manchester, UK", "Mentoring future healthcare professionals with compassion and purpose.", "old", "66.666%"],
-  ["David Osei", "Creative & Media", "Creative Director, Studio Blanc", "London", "Guiding the next wave of storytellers and cultural architects.", "old", "100%"],
-  ["Samuel Adebayo", "Law & Policy", "Senior Legal Counsel", "Lagos, NG", "Empowering adolescents to understand advocacy and moral leadership.", "new", "50%"],
-  ["Amina Al-Mansoor", "Engineering", "Principal Robotics Architect", "Cambridge, UK", "Demystifying engineering and hands-on STEM for curious teenagers.", "new", "100%"],
-];
-const steps = [
-  ["01", "Guided Discovery & Alignment", "Onboarding uncovers values, gifts, passions, and aspirations."],
-  ["02", "Intentional Matching", "Curated pairing based on personality, trajectory, and shared values."],
-  ["03", "Structured 9-Month Cohort", "Bi-weekly sessions, masterclasses, roadmaps, and milestones."],
-  ["04", "Lifelong Network & Launch", "Alumni community, university guidance, and internship access."],
-];
-const safety = [
-  ["Rigorous Background Vetting", "Criminal checks, verified DBS or country equivalent, and references."],
-  ["Strict Communication Code", "All interactions occur in supervised digital environments."],
-  ["Adolescent Training", "Safeguarding, inclusive language, and psychology training."],
-  ["Parental Transparency", "Periodic reviews and access to mentorship progress reports."],
+const footerColumns = [
+  ["Explore", ["About", "Mentors", "Training", "Conferences", "Testimonials", "Contact"]],
+  ["Programmes", ["Boys Mentoring Hub", "Girls Mentorship Hub", "Apply now"]],
+  ["Get involved", ["Become a mentor", "Volunteer", "Partner with TAG", "Donate"]],
+  ["Connect", ["Instagram", "YouTube", "WhatsApp Channel"]],
 ];
 
-export default function MentorsPage() { return <main className="bg-slate-50 text-secondary"><SiteHeader active="mentors" />
-  <section className="border-b border-slate-200 px-5 py-16 lg:px-8 lg:py-20"><div className="mx-auto max-w-7xl"><p className="inline-flex rounded-full bg-blue-100 px-3 py-1.5 text-[.65rem] font-black uppercase tracking-[.14em] text-primary">Vetted mentorship network</p><h1 className="mt-7 max-w-4xl text-5xl font-black leading-[1.03] sm:text-6xl">Meet the People Helping Shape the Next Generation</h1><p className="mt-6 max-w-3xl text-base leading-8 text-slate-600">Our global network of industry leaders, innovators, and educators guide ambitious teens toward their highest potential through intentional, Christ-centred mentorship.</p><div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">{[["100% Vetted", "Background checked"], ["1:1 & Small Groups", "Tailored cohorts"], ["Global Reach", "Industry representation"], ["9-Month Journey", "Longitudinal support"]].map(([t,c],i)=><div className="flex items-center gap-3 rounded-md border border-slate-200 bg-white p-4" key={t}><span className={`grid size-9 place-items-center rounded-md text-xs font-black ${i===3?"bg-amber-100 text-amber-700":"bg-blue-100 text-primary"}`}>{i+1}</span><div><p className="text-[.68rem] font-black uppercase">{t}</p><p className="mt-1 text-[.62rem] text-slate-500">{c}</p></div></div>)}</div></div></section>
+export default function MentorsPage() {
+  return (
+    <main className="bg-tag-cream text-tag-text">
+      <SiteHeader active="mentors" />
 
-  <section className="border-b border-slate-200 bg-white px-5 py-6 lg:px-8"><div className="mx-auto flex max-w-7xl flex-col gap-5 lg:flex-row lg:items-center lg:justify-between"><div className="flex flex-wrap gap-2">{["All Expertise", "Technology & AI", "Finance & Investment", "Medicine & Healthcare", "Law & Public Policy", "Creative & Media", "Engineering"].map((item,i)=><Button className="rounded-full text-[.65rem]" key={item} size="sm" variant={i===0?"default":"subtle"}>{item}</Button>)}</div><label className="flex h-10 min-w-72 items-center gap-2 rounded-md border border-slate-200 px-3 text-xs text-slate-400"><Search aria-hidden="true" className="size-4"/><input aria-label="Search mentors" className="w-full outline-none" placeholder="Search mentors by name or company" type="search" /></label></div></section>
+      <section className="relative overflow-hidden bg-tag-midnight px-5 pb-32 pt-10 text-tag-cream lg:px-8 lg:pb-40">
+        <div className="pointer-events-none absolute right-[6%] top-16 hidden h-64 w-[34%] lg:block">
+          <span className="absolute left-0 top-8 size-2 rounded-full bg-tag-gold" />
+          <span className="absolute left-[44%] top-32 size-2 rounded-full bg-tag-gold" />
+          <span className="absolute right-[20%] top-2 size-2 rounded-full bg-tag-gold" />
+          <span className="absolute bottom-3 right-0 size-2 rounded-full bg-tag-gold" />
+          <i className="absolute left-1 top-10 h-px w-[47%] origin-left rotate-[34deg] bg-tag-gold/50" />
+          <i className="absolute left-[44%] top-32 h-px w-[48%] origin-left -rotate-[38deg] bg-tag-gold/50" />
+          <i className="absolute right-[19%] top-4 h-px w-[68%] origin-right rotate-[58deg] bg-tag-gold/50" />
+        </div>
+        <div className="relative mx-auto max-w-7xl">
+          <nav aria-label="Breadcrumb" className="text-xs text-tag-text-on-dark-muted"><Link href="/">Home</Link><span className="mx-2">/</span><strong className="text-tag-cream">Mentors</strong></nav>
+          <h1 className="mt-10 max-w-5xl font-heading text-[clamp(3rem,6vw,5.5rem)] font-bold leading-[.94] tracking-[-.04em]">Meet the people helping shape the next generation</h1>
+          <p className="mt-7 max-w-2xl text-base leading-7 text-tag-text-on-dark-body">Doctors, engineers, lawyers, founders, creatives and educators: vetted, trained and here because they believe in you.</p>
+        </div>
+      </section>
 
-  <section className="px-5 py-16 lg:px-8"><div className="mx-auto grid max-w-7xl gap-5 md:grid-cols-2 xl:grid-cols-3">{mentors.map(([name,field,role,location,intro,asset,position])=><article className="rounded-lg border border-slate-200 bg-white p-5" key={name}><div className="flex gap-4"><div className={`size-20 shrink-0 rounded-md bg-no-repeat ${asset==="old"?"bg-[url('/images/tag-mentors.png')] bg-[length:400%_auto]":"bg-[url('/images/tag-mentor-directory.png')] bg-[length:300%_auto]"}`} style={{backgroundPosition:`${position} center`}}/><div className="min-w-0"><div className="flex items-center gap-2"><span className="rounded-full bg-blue-50 px-2 py-1 text-[.58rem] font-bold text-primary">{field}</span><span className="truncate text-[.58rem] text-slate-400">{location}</span></div><h2 className="mt-2 text-lg font-black">{name}</h2><p className="truncate text-xs text-slate-500">{role}</p></div></div><p className="mt-5 min-h-12 text-xs leading-6 text-slate-500">{intro}</p><div className="mt-4 rounded-md bg-slate-50 p-3 text-[.68rem] leading-5 text-slate-600"><strong className="text-primary">Why I mentor:</strong> Every young person deserves wise guidance and a door held open.</div><Button className="mt-5 w-full text-xs font-black" variant="outline">View Full Profile <ArrowRight aria-hidden="true" className="size-4"/></Button></article>)}</div><div className="mt-10 text-center"><Button className="text-xs font-black" size="xl" variant="outline">Load More Mentors <ChevronDown aria-hidden="true" className="size-4"/></Button></div></section>
+      <MentorDirectory />
 
-  <section className="px-5 py-12 lg:px-8"><div className="mx-auto max-w-7xl rounded-lg border border-slate-200 bg-white p-7 sm:p-10 lg:p-12"><p className="eyebrow text-left">The 4-step journey</p><h2 className="section-title text-left">How Mentorship Works at TAG</h2><p className="section-copy mx-0 text-left">A purposeful structure taking adolescents from discovery to sustainable personal and career breakthrough.</p><div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{steps.map(([n,t,c],i)=><article className="rounded-md bg-slate-50 p-6" key={t}><p className="text-3xl font-black text-blue-200">{n}</p><span className={`mt-5 grid size-9 place-items-center rounded-md ${i===2?"bg-amber-100 text-amber-700":"bg-blue-100 text-primary"}`}><Sparkles aria-hidden="true" className="size-4"/></span><h3 className="mt-5 text-sm font-black">{t}</h3><p className="mt-3 text-xs leading-6 text-slate-500">{c}</p></article>)}</div></div></section>
+      <section className="px-5 pb-24 lg:px-8 lg:pb-32">
+        <div className="mx-auto grid max-w-7xl overflow-hidden rounded-2xl bg-tag-gold shadow-elev-card lg:grid-cols-2">
+          <div className="p-8 sm:p-12">
+            <p className="text-xs font-bold uppercase tracking-[.14em] text-tag-girls-deep">Become a mentor</p>
+            <h2 className="mt-5 max-w-xl text-4xl font-bold leading-[.98] sm:text-5xl">Be the person you needed at sixteen.</h2>
+            <p className="mt-6 max-w-xl text-base leading-7 text-tag-text-body">Give a few hours a month. We&apos;ll vet, train and support you, then match you with young people who will benefit from your story.</p>
+            <Link className={buttonVariants({ className: "mt-8", variant: "dark" })} href="/contact">Apply to Mentor <ArrowRight aria-hidden="true" /></Link>
+          </div>
+          <div className="relative min-h-80 bg-tag-girls-photo">
+            <Image alt="Mentor coaching a young person" className="object-cover" fill sizes="(max-width:1024px) 100vw, 50vw" src="/images/tag-about-community.png" />
+            <div className="absolute inset-0 bg-tag-girls-photo/20" />
+            <p className="absolute bottom-5 left-5 text-xs font-semibold text-white drop-shadow">Mentor leaning in, coaching a teenager over a laptop.</p>
+          </div>
+        </div>
+      </section>
 
-  <section className="px-5 py-12 lg:px-8"><div className="mx-auto grid max-w-7xl gap-10 rounded-lg border border-slate-200 bg-white p-7 sm:p-10 lg:grid-cols-[.9fr_1.1fr] lg:p-12"><div><p className="inline-flex rounded-full bg-emerald-50 px-3 py-1.5 text-[.62rem] font-black uppercase text-emerald-700">Uncompromising child safety standards</p><h2 className="mt-6 text-3xl font-black leading-tight sm:text-4xl">Safeguarding, Vetting & Parental Trust</h2><p className="mt-5 text-sm leading-7 text-slate-500">Exceptional mentorship starts with uncompromising safety. Every mentor passes rigorous verification, legal clearances, and continuous monitoring.</p><div className="mt-6 flex flex-wrap gap-5 text-[.65rem] font-bold"><span className="inline-flex items-center gap-2"><CheckCircle2 aria-hidden="true" className="size-4 text-emerald-600"/>Enhanced DBS verified</span><span className="inline-flex items-center gap-2"><CheckCircle2 aria-hidden="true" className="size-4 text-emerald-600"/>Monitored sessions</span></div></div><div className="grid gap-4 sm:grid-cols-2">{safety.map(([t,c],i)=><article className="rounded-md border border-slate-200 p-5" key={t}><span className="grid size-8 place-items-center rounded-md bg-blue-50 text-xs font-black text-primary">{i+1}</span><h3 className="mt-4 text-sm font-black">{t}</h3><p className="mt-2 text-[.68rem] leading-5 text-slate-500">{c}</p></article>)}</div></div></section>
-
-  <section className="px-5 py-16 lg:px-8"><div className="mx-auto grid max-w-7xl items-center gap-8 rounded-lg bg-primary px-7 py-12 text-white shadow-[0_18px_45px_rgba(37,99,235,.18)] sm:px-12 lg:grid-cols-[1.3fr_.7fr]"><div><p className="text-[.62rem] font-black uppercase tracking-[.16em] text-blue-200">Join our global faculty</p><h2 className="mt-4 text-3xl font-black leading-tight">Have Experience to Share? Sow Into the Next Generation.</h2><p className="mt-4 max-w-2xl text-sm leading-7 text-blue-100">Join a selective global guild of professionals shaping teen character, vision, and ambition with 2–4 flexible hours per month and full curriculum support.</p></div><div className="flex flex-col gap-3"><Button size="xl" variant="accent">Apply to Become a Mentor</Button><Button size="xl" variant="outline-inverse">Download Mentor Handbook</Button></div></div></section>
-
-  <footer id="contact" className="bg-white px-5 py-12 lg:px-8"><div className="mx-auto grid max-w-7xl gap-10 sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1fr]"><div><Link className="text-xl font-black text-primary" href="/">TAG</Link><p className="mt-4 max-w-xs text-xs leading-6 text-slate-500">© 2026 Teens Academy Global.<br/>Potential should never be limited by circumstance.</p></div><div><p className="footer-title">Explore</p><Link href="/">Home</Link><Link href="/about">About</Link><Link href="/mentors">Mentors</Link></div><div><p className="footer-title">Training</p><Link href="/#programs">Programs</Link><Link href="/conferences">Conferences</Link></div><div><p className="footer-title">Legal</p><Link href="#">Privacy Policy</Link><Link href="#">Terms of Service</Link><Link href="#">Safeguarding</Link></div></div></footer>
-</main>; }
+      <footer className="bg-tag-midnight px-5 pb-8 pt-14 text-tag-cream lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid gap-10 md:grid-cols-[1.4fr_repeat(4,1fr)]">
+            <div><BrandLogo placement="footer" /><p className="mt-4 max-w-xs text-sm leading-6 text-tag-text-on-dark-body">Helping teenagers and young adults discover who they are, realise what is possible, and gain the guidance and opportunities to become who they were created to be.</p></div>
+            {footerColumns.map(([title, links]) => <div key={title as string}><p className="text-xs font-bold uppercase tracking-[.12em] text-tag-gold">{title}</p><div className="mt-4 space-y-3">{(links as string[]).map((label) => <Link className="text-sm text-tag-text-on-dark-body hover:text-white" href="/contact" key={label}>{label}</Link>)}</div></div>)}
+          </div>
+          <div className="mt-12 flex flex-col gap-4 rounded-lg border border-white/10 bg-white/5 px-5 py-4 text-xs text-tag-text-on-dark-body sm:flex-row sm:items-center sm:justify-between"><span className="flex items-center gap-2"><ShieldCheck aria-hidden="true" className="size-4 text-tag-gold" />Safeguarding comes first. Every mentor is vetted and trained before working with young people.</span><Link className="font-bold text-tag-gold" href="/contact">Read our safeguarding approach <ArrowRight aria-hidden="true" className="ml-1 inline size-3.5" /></Link></div>
+          <div className="mt-8 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-tag-text-on-dark-muted sm:flex-row sm:items-center sm:justify-between"><p>© 2026 Teens Academy Global. All rights reserved.</p><div className="flex gap-5"><Link href="#">Privacy Policy</Link><Link href="#">Terms</Link><Link href="#">Safeguarding Policy</Link></div></div>
+        </div>
+      </footer>
+    </main>
+  );
+}
