@@ -3,39 +3,38 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "cn"
 
 const buttonVariants = cva(
-  "group/button inline-flex shrink-0 items-center justify-center rounded-md border border-transparent bg-clip-padding text-sm font-bold whitespace-nowrap transition-all outline-none select-none focus-visible:ring-[3px] focus-visible:ring-blue-200 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-[3px] aria-invalid:ring-destructive/20 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+  "group/button inline-flex shrink-0 items-center justify-center rounded-full border border-transparent bg-clip-padding font-semibold whitespace-nowrap transition-[background-color,border-color,color,box-shadow,transform] duration-150 outline-none select-none focus-visible:ring-[3px] focus-visible:ring-tag-gold disabled:pointer-events-none disabled:border-tag-line disabled:bg-tag-sand disabled:text-tag-text-muted active:not-aria-[haspopup]:translate-y-px aria-invalid:border-tag-error aria-invalid:ring-tag-error-bg motion-reduce:transition-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
   {
     variants: {
       variant: {
-        default: "bg-primary text-white hover:bg-blue-700",
-        accent: "bg-tertiary text-slate-950 hover:bg-amber-400",
+        default: "bg-tag-royal text-white shadow-elev-button hover:bg-tag-royal-deep",
+        accent: "bg-tag-gold text-tag-midnight shadow-elev-button hover:bg-[#d99610]",
         outline:
-          "border-slate-300 bg-white text-primary hover:border-primary hover:bg-blue-50",
+          "border-tag-midnight bg-tag-cream text-tag-midnight hover:bg-tag-sand",
         "outline-inverse":
-          "border-white/60 bg-transparent text-white hover:bg-white hover:text-secondary",
-        inverse: "bg-white text-primary hover:bg-blue-50",
+          "border-tag-cream/60 bg-transparent text-tag-cream hover:bg-tag-cream hover:text-tag-midnight",
+        inverse: "bg-white text-tag-royal hover:bg-tag-cream",
         glass:
-          "border-white/70 bg-black/15 text-white backdrop-blur hover:bg-white hover:text-secondary",
-        subtle: "bg-slate-100 text-primary hover:bg-slate-200",
+          "border-tag-cream/70 bg-tag-midnight/20 text-tag-cream backdrop-blur hover:bg-tag-cream hover:text-tag-midnight",
+        subtle: "bg-tag-sand text-tag-midnight hover:bg-tag-line",
         secondary:
-          "bg-secondary text-secondary-foreground hover:bg-[color-mix(in_oklch,var(--secondary),var(--foreground)_5%)] aria-expanded:bg-secondary aria-expanded:text-secondary-foreground",
+          "bg-tag-midnight text-tag-cream hover:bg-tag-midnight-2",
+        dark: "bg-tag-midnight text-tag-cream hover:bg-tag-midnight-2",
         ghost:
           "hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50",
-        destructive:
-          "bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40",
-        link: "text-primary underline-offset-4 hover:underline",
+        destructive: "bg-tag-error text-white hover:bg-tag-girls-deep focus-visible:ring-tag-error-bg",
+        link: "h-auto rounded-none border-0 p-0 text-tag-royal underline-offset-4 shadow-none hover:underline",
       },
       size: {
-        default:
-          "h-9 gap-1.5 px-3 has-data-[icon=inline-end]:pr-2.5 has-data-[icon=inline-start]:pl-2.5",
-        xs: "h-6 gap-1 px-2.5 text-xs has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2 [&_svg:not([class*='size-'])]:size-3",
-        sm: "h-8 gap-1 px-3 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
-        lg: "h-10 gap-1.5 px-4 has-data-[icon=inline-end]:pr-3 has-data-[icon=inline-start]:pl-3",
-        xl: "h-12 gap-2 px-5 text-sm",
-        icon: "size-9",
-        "icon-xs": "size-6 [&_svg:not([class*='size-'])]:size-3",
-        "icon-sm": "size-8",
-        "icon-lg": "size-10",
+        default: "h-[52px] gap-2 px-6 text-[15px]",
+        xs: "h-9 gap-1.5 px-3 text-xs [&_svg:not([class*='size-'])]:size-3.5",
+        sm: "h-11 gap-2 px-5 text-sm",
+        lg: "h-[58px] gap-2.5 px-8 text-base",
+        xl: "h-[58px] gap-2.5 px-8 text-base",
+        icon: "size-11",
+        "icon-xs": "size-9 [&_svg:not([class*='size-'])]:size-3.5",
+        "icon-sm": "size-10",
+        "icon-lg": "size-11",
       },
     },
     defaultVariants: {

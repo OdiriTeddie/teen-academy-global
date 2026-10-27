@@ -1,11 +1,16 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Figtree } from "next/font/google";
+import { Bricolage_Grotesque, DM_Sans } from "next/font/google";
 import { cn } from "@/lib/utils";
 
-const figtree = Figtree({
+const display = Bricolage_Grotesque({
   subsets: ["latin"],
-  variable: "--font-figtree",
+  variable: "--font-bricolage",
+});
+
+const body = DM_Sans({
+  subsets: ["latin"],
+  variable: "--font-dm-sans",
 });
 
 export const metadata: Metadata = {
@@ -16,7 +21,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={cn("h-full antialiased", "font-sans", figtree.variable)}>
+    <html
+      lang="en"
+      className={cn("h-full antialiased", display.variable, body.variable)}
+    >
       <body className="min-h-full">{children}</body>
     </html>
   );
