@@ -39,17 +39,17 @@ const navigation: Array<{ href: string; key: NavigationKey; label: string }> = [
 export function SiteHeader({ active, overlay = false }: SiteHeaderProps) {
   return (
     <header
-      className={`${overlay ? "absolute inset-x-0 top-0 z-20 border-white/15 bg-white/95 backdrop-blur" : "relative z-20 border-slate-200 bg-white"} border-b text-secondary`}
+      className={`${overlay ? "absolute inset-x-0 top-0" : "sticky top-0"} z-40 border-b border-tag-line bg-tag-cream/95 text-tag-midnight backdrop-blur`}
     >
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 lg:px-8">
+      <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-5 lg:px-8">
         <BrandLogo />
         <nav
           aria-label="Main navigation"
-          className="hidden items-center gap-5 text-xs font-semibold text-slate-600 lg:flex xl:gap-7 xl:text-sm"
+          className="hidden items-center gap-5 text-xs font-semibold text-tag-text-body lg:flex xl:gap-7 xl:text-sm"
         >
           {navigation.map((item) => (
             <Link
-              className={active === item.key ? "text-primary" : undefined}
+              className={active === item.key ? "border-b-2 border-tag-gold pb-1 text-tag-midnight" : "hover:text-tag-royal"}
               href={item.href}
               key={item.key}
             >
@@ -58,7 +58,7 @@ export function SiteHeader({ active, overlay = false }: SiteHeaderProps) {
           ))}
         </nav>
         <Link
-          className={buttonVariants({ className: "hidden text-xs lg:inline-flex", variant: "accent" })}
+          className={buttonVariants({ className: "hidden lg:inline-flex", size: "sm", variant: "accent" })}
           href="/#programs"
         >
           Join a Programme
@@ -77,9 +77,9 @@ export function SiteHeader({ active, overlay = false }: SiteHeaderProps) {
           >
             <Menu aria-hidden="true" size={21} />
           </SheetTrigger>
-          <SheetContent className="w-[min(88vw,24rem)] bg-white" side="right">
-            <SheetHeader className="border-b border-slate-200 pr-16">
-              <SheetTitle className="font-black text-secondary">Explore TAG</SheetTitle>
+          <SheetContent className="w-[min(88vw,24rem)] bg-tag-cream" side="right">
+            <SheetHeader className="border-b border-tag-line pr-16">
+              <SheetTitle className="font-heading text-xl font-bold text-tag-midnight">Explore TAG</SheetTitle>
               <SheetDescription>Navigate Teens Academy Global</SheetDescription>
             </SheetHeader>
             <nav aria-label="Mobile navigation" className="grid gap-1 px-5 py-5">
@@ -92,8 +92,8 @@ export function SiteHeader({ active, overlay = false }: SiteHeaderProps) {
                       aria-current={active === item.key ? "page" : undefined}
                       className={`flex min-h-11 items-center border-l-2 px-4 text-sm font-semibold transition ${
                         active === item.key
-                          ? "border-primary bg-blue-50 text-primary"
-                          : "border-transparent text-slate-700 hover:border-slate-300 hover:bg-slate-50"
+                          ? "border-tag-gold bg-tag-gold-soft text-tag-midnight"
+                          : "border-transparent text-tag-text-body hover:border-tag-line-strong hover:bg-white"
                       }`}
                       href={item.href}
                     />
