@@ -20,6 +20,7 @@ type NavigationKey =
   | "mentors"
   | "training"
   | "conferences"
+  | "testimonials"
   | "contact";
 
 type SiteHeaderProps = {
@@ -33,6 +34,7 @@ const navigation: Array<{ href: string; key: NavigationKey; label: string }> = [
   { href: "/mentors", key: "mentors", label: "Mentors" },
   { href: "/training", key: "training", label: "Trainings" },
   { href: "/conferences", key: "conferences", label: "Conferences" },
+  { href: "/testimonials", key: "testimonials", label: "Testimonials" },
   { href: "/contact", key: "contact", label: "Contact" },
 ];
 
