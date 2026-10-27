@@ -1,74 +1,206 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowRight, Check, ShieldCheck } from "lucide-react";
+import { BrandLogo } from "@/components/brand-logo";
 import { SiteHeader } from "@/components/site-header";
-import { ArrowRight, Quote } from "lucide-react";
+import { buttonVariants } from "@/components/ui/button";
 
 export const metadata: Metadata = {
   title: "About TAG | Teens Academy Global",
-  description: "The vision, values, and holistic development framework behind Teens Academy Global.",
+  description: "The story, faith, values, and safeguarding commitment behind Teens Academy Global.",
 };
 
 const values = [
-  ["Faith", "Anchored in Christ-centred truth, hope, courage, and spiritual resilience."],
-  ["Excellence", "Striving for the highest standards in academics, professional skills, and stewardship."],
-  ["Integrity", "Building dependable, transparent young leaders whose character matters."],
-  ["Compassion", "Loving, serving, and advocating for others with empathy and dignity."],
-  ["Purpose", "Uncovering unique calling and taking practical steps into meaningful work."],
-  ["Global Ambition", "Equipping youth to lead confidently across communities and cultures."],
+  ["01", "Faith", "Christ at the centre of who we are and how we serve."],
+  ["02", "Excellence", "World-class standards, whatever the starting point."],
+  ["03", "Integrity", "Honest, safe and accountable in everything."],
+  ["04", "Compassion", "Meeting young people with care, not judgement."],
+  ["05", "Purpose", "Every life created with meaning and direction."],
+  ["06", "Growth", "Progress over perfection, one step at a time."],
+  ["07", "Leadership", "Leading ourselves first, then serving others."],
+  ["08", "Community", "No one grows alone. We rise together."],
 ];
 
-const challenges = [
-  ["Access & Equity", "Removing systemic barriers to education, guidance, and opportunity."],
-  ["Active Mentorship", "Connecting young people with trusted professionals and community leaders."],
-  ["Global Exposure", "Broadening horizons through international learning and collaboration."],
-  ["Safe & Nurturing Space", "Creating affirming communities where young people can grow."],
+const responses = [
+  ["Lack of educational opportunities", "Access to learning & resources"],
+  ["Lack of mentorship and positive role models", "Professionals who show up, consistently"],
+  ["Poverty and disadvantaged communities", "Dreams that reach beyond circumstance"],
+  ["Limited exposure to what is possible", "Rooms, conferences and global networks"],
+  ["Lack of career guidance", "Clear pathways into study and work"],
+  ["Lack of confidence", "A secure identity and a voice"],
 ];
 
-const pillars = [
-  ["1", "Spiritual", "Christ-centred identity, prayerful discipline, and purposeful faith."],
-  ["2", "Educational", "Academic mastery, scholarship guidance, and lifelong learning."],
-  ["3", "Leadership", "Communication, service, collaboration, and courageous decisions."],
-  ["4", "Personal", "Emotional intelligence, resilience, self-awareness, and confidence."],
-  ["5", "Global & Career", "Professional readiness, enterprise, cultural awareness, and ambition."],
+const safety = [
+  ["Vetted mentors", "Every mentor completes background checks and reference validation."],
+  ["Safeguarding training", "Mentors and volunteers are trained to protect and care for young people."],
+  ["Parents kept informed", "Regular consent, updates and programme activity information."],
+  ["Clear reporting", "A named safeguarding lead and a clear process for raising concerns."],
 ];
 
-const card = "rounded-md border border-slate-200 bg-white p-6";
-
-function Heading({ eyebrow, title, copy }: { eyebrow: string; title: string; copy?: string }) {
-  return <div className="mx-auto max-w-3xl text-center"><p className="eyebrow">{eyebrow}</p><h2 className="section-title">{title}</h2>{copy && <p className="section-copy">{copy}</p>}</div>;
-}
+const footerColumns = [
+  ["Explore", ["About", "Mentors", "Training", "Conferences", "Testimonials", "Contact"]],
+  ["Programmes", ["Boys Mentoring Hub", "Girls Mentorship Hub", "Apply now"]],
+  ["Get involved", ["Become a mentor", "Volunteer", "Partner with TAG", "Donate"]],
+  ["Connect", ["Instagram", "YouTube", "WhatsApp Channel"]],
+];
 
 export default function AboutPage() {
-  return <main className="bg-white text-secondary"><SiteHeader active="about" />
-    <section className="relative overflow-hidden bg-slate-50 px-5 py-20 lg:px-8 lg:py-28">
-      <div className="absolute inset-y-0 right-0 hidden w-[38%] bg-blue-50 lg:block" />
-      <div className="relative mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-[1fr_.82fr]">
-        <div className="max-w-2xl"><p className="inline-flex rounded-full bg-blue-100 px-3 py-1.5 text-[.65rem] font-black uppercase tracking-[.14em] text-primary">Our purpose</p><h1 className="mt-7 text-5xl font-black leading-[1.03] sm:text-6xl">Building a Generation of <span className="text-primary">Purposeful</span> Global Leaders</h1><p className="mt-6 max-w-xl text-base leading-8 text-slate-600">We believe potential should never be limited by circumstance. TAG is a global academy passionately developing a values-led next generation of transformational youth leaders.</p></div>
-        <div className="relative mx-auto w-full max-w-md rotate-[1.5deg]"><div className="relative aspect-[4/5] overflow-hidden rounded-lg shadow-[0_24px_70px_rgba(15,23,42,.18)]"><Image alt="TAG mentor and students learning together" className="object-cover" fill priority sizes="(max-width:1024px) 90vw, 36vw" src="/images/tag-about-community.png" /></div><div className="absolute -bottom-5 -left-3 rounded-md bg-white px-4 py-3 shadow-xl"><p className="text-[.62rem] font-black uppercase text-primary">Global network</p><p className="mt-1 text-xs font-bold">Growing across communities</p></div></div>
-      </div>
-    </section>
+  return (
+    <main className="bg-tag-cream text-tag-text">
+      <SiteHeader active="about" />
 
-    <section className="px-5 py-20 lg:px-8 lg:py-24"><div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.05fr_.95fr]">
-      <div><p className="eyebrow text-left">Our genesis & story</p><h2 className="section-title max-w-xl text-left">Born From a Divine Vision to Bridge Potential and Opportunity</h2><div className="mt-6 space-y-4 text-sm leading-7 text-slate-600"><p>Teens Academy Global was born from a God-given vision laid upon our hearts: to champion teenagers and young adults, especially those from underprivileged communities and overlooked backgrounds.</p><p>TAG&apos;s purpose is a Christ-led commitment to spiritual growth, educational advancement, character formation, and life-giving guidance. No young person should walk their defining years in isolation.</p></div><div className="mt-8 grid gap-3 sm:grid-cols-3">{[["Faith-led", "Rooted in prayer and service"], ["Global scope", "Connecting across cultures"], ["Real potential", "Every gift has purpose"]].map(([title, copy]) => <div className="rounded-md bg-slate-50 p-4" key={title}><p className="text-xs font-black text-primary">{title}</p><p className="mt-2 text-[.68rem] leading-5 text-slate-500">{copy}</p></div>)}</div></div>
-      <blockquote className="rounded-lg bg-primary p-8 text-white shadow-[0_20px_50px_rgba(37,99,235,.18)] sm:p-10"><Quote aria-hidden="true" className="size-9 text-blue-200"/><p className="mt-3 text-xl font-black leading-8">Every young person deserves the opportunity to dream beyond their circumstances, discover their God-given gifts, and step into global influence.</p><footer className="mt-8 border-t border-white/20 pt-5 text-xs font-bold text-blue-100">TAG Founding Conviction</footer></blockquote>
-    </div></section>
+      <section className="px-5 pb-20 pt-10 lg:px-8 lg:pb-28">
+        <div className="mx-auto max-w-7xl">
+          <nav aria-label="Breadcrumb" className="text-xs text-tag-text-muted">
+            <Link href="/">Home</Link> <span className="mx-2">/</span> <strong className="text-tag-midnight">About Us</strong>
+          </nav>
+          <div className="mt-10 grid gap-8 lg:grid-cols-[1.25fr_.75fr] lg:items-end">
+            <h1 className="max-w-4xl font-heading text-[clamp(3.4rem,7vw,6.4rem)] font-bold leading-[.88] tracking-[-.045em]">
+              Building a generation of purposeful global leaders
+            </h1>
+            <p className="max-w-md text-base leading-7 text-tag-text-body lg:pb-3">
+              A Christian youth-development movement helping teenagers and young adults grow in faith, knowledge, character and opportunity.
+            </p>
+          </div>
+          <div className="relative mt-14 aspect-[16/7] min-h-[320px] overflow-hidden rounded-2xl bg-tag-midnight shadow-elev-card">
+            <Image
+              alt="TAG young people and mentors learning together"
+              className="object-cover"
+              fill
+              priority
+              sizes="(max-width: 1280px) 100vw, 1280px"
+              src="/images/tag-about-community.png"
+            />
+            <div className="absolute inset-0 bg-tag-midnight/25" />
+            <p className="absolute bottom-5 left-5 rounded-full bg-tag-midnight/75 px-3 py-2 text-[11px] font-semibold text-tag-cream backdrop-blur">
+              Wide shot · TAG young people and mentors learning together
+            </p>
+          </div>
+        </div>
+      </section>
 
-    <section className="bg-slate-50 px-5 py-20 lg:px-8 lg:py-24"><Heading eyebrow="Guiding north" title="Our Vision & Mission" copy="Clear, steadfast guideposts shaping our long-term commitment to youth across nations." /><div className="mx-auto mt-11 grid max-w-5xl gap-5 lg:grid-cols-2">
-      <article className={card}><span className="text-xs font-black uppercase text-primary">01 · Our vision</span><h3 className="mt-5 text-xl font-black">Generational Transformation</h3><p className="mt-4 text-sm leading-7 text-slate-500">To raise purpose-driven, globally competitive leaders who discover their identity in Christ and transform communities through ethical leadership, innovation, excellence, and service.</p><strong className="mt-6 inline-flex items-center gap-2 text-xs text-primary">A future built on transformed youth <ArrowRight aria-hidden="true" className="size-4"/></strong></article>
-      <article className={card}><span className="text-xs font-black uppercase text-amber-700">02 · Our mission</span><h3 className="mt-5 text-xl font-black">Holistic Empowerment</h3><p className="mt-4 text-sm leading-7 text-slate-500">Equipping young people through values-led mentorship, education, character formation, and opportunities that break cycles of limitation and prepare them for global impact.</p><strong className="mt-6 inline-flex items-center gap-2 text-xs text-amber-700">Empowering body, mind, and spirit <ArrowRight aria-hidden="true" className="size-4"/></strong></article>
-    </div></section>
+      <section className="px-5 pb-20 lg:px-8 lg:pb-28">
+        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[.75fr_1.25fr]">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[.14em] text-tag-royal">Our story</p>
+            <h2 className="mt-4 max-w-md text-4xl font-bold leading-[.98] sm:text-5xl">It started with a God-given vision.</h2>
+            <p className="mt-4 text-xs text-tag-text-muted">Founded [Year] · [City, Country]</p>
+          </div>
+          <div className="space-y-5 text-base leading-7 text-tag-text-body">
+            <p>Teens Academy Global is a vision laid upon our hearts by God and directed toward teenagers and young adults. We kept meeting bright, gifted young people whose futures were being decided by where they were born rather than by who they could become.</p>
+            <p>In communities where quality education, mentorship and exposure are hard to reach, potential too often goes unseen. TAG exists to change that: to be a beacon of hope that encourages young people to dream beyond their circumstances, and then walks with them as they do.</p>
+            <blockquote className="border-y border-tag-midnight py-5 font-heading text-2xl font-bold leading-tight text-tag-midnight">
+              “Your circumstances don&apos;t define your potential.”
+            </blockquote>
+            <p className="text-sm text-tag-text-muted">The founding story and the first young people TAG served belong here as this history is documented.</p>
+          </div>
+        </div>
+      </section>
 
-    <section className="px-5 py-20 lg:px-8 lg:py-24"><div className="mx-auto max-w-7xl"><div className="grid gap-6 lg:grid-cols-[.8fr_1.2fr] lg:items-end"><div><p className="eyebrow text-left">The catalyst</p><h2 className="section-title text-left">Why TAG Exists: Addressing Real Challenges with Real Hope</h2></div><p className="text-sm leading-7 text-slate-500">Millions of teenagers encounter broken guidance systems, economic barriers, and an absence of career role models. TAG responds with strategic programmes that nurture hope and unlock lasting personal mobility.</p></div><div className="mt-11 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{challenges.map(([title, copy], index) => <article className="rounded-md bg-slate-50 p-6" key={title}><span className="grid size-9 place-items-center rounded-md bg-blue-100 text-xs font-black text-primary">0{index + 1}</span><h3 className="mt-5 text-sm font-black">{title}</h3><p className="mt-3 text-xs leading-6 text-slate-500">{copy}</p></article>)}</div></div></section>
+      <section className="px-5 pb-20 lg:px-8 lg:pb-28">
+        <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-[1.1fr_.9fr]">
+          <article className="relative overflow-hidden rounded-2xl bg-tag-midnight p-8 text-tag-cream sm:p-10">
+            <div className="pointer-events-none absolute -right-24 -top-24 size-72 rounded-full border border-white/10" />
+            <p className="text-xs font-bold uppercase tracking-[.14em] text-tag-gold">Our vision</p>
+            <h2 className="relative mt-8 max-w-2xl text-3xl font-bold leading-[1.05] sm:text-4xl">
+              To see teenagers and young adults, especially from underprivileged communities, discover their identity and purpose in Christ, dream beyond their circumstances, and compete on the global stage.
+            </h2>
+          </article>
+          <article className="rounded-2xl bg-tag-gold-soft p-8 sm:p-10">
+            <p className="text-xs font-bold uppercase tracking-[.14em] text-tag-girls-deep">Our mission</p>
+            <p className="mt-8 text-base leading-7 text-tag-text-body">We turn that vision into practice through values, resources, mentorship, coaching, training and opportunities that develop young people:</p>
+            <div className="mt-7 grid grid-cols-2 gap-x-5 gap-y-3 text-sm font-semibold">
+              {["Spiritually", "Educationally", "Socially", "Emotionally", "Professionally", "As leaders"].map((item) => <span className="flex items-center gap-2" key={item}><Check aria-hidden="true" className="size-4 text-tag-royal" />{item}</span>)}
+            </div>
+          </article>
+        </div>
+      </section>
 
-    <section className="bg-slate-50 px-5 py-20 text-center lg:px-8"><div className="mx-auto max-w-4xl"><p className="inline-flex rounded-full bg-blue-100 px-3 py-1.5 text-[.65rem] font-black uppercase tracking-[.14em] text-primary">Christ-led at heart</p><h2 className="section-title">Rooted in Faith, Welcoming to All</h2><p className="section-copy max-w-3xl">At the heart of TAG is a Christ-centred ethic. Every young person is made in the image of God with boundless intrinsic value, distinct gifts, and an eternal calling. Our faith inspires us to love unconditionally, serve sacrificially, and lead with compassion.</p><div className="mt-8 flex flex-wrap justify-center gap-3 text-[.65rem] font-bold text-slate-600">{["Christ-centred compassion", "Inclusive welcome & dignity", "Unwavering moral backbone"].map(item => <span className="rounded-full border border-slate-200 bg-white px-4 py-2" key={item}>{item}</span>)}</div></div></section>
+      <section className="border-y border-tag-line bg-white px-5 py-20 lg:px-8 lg:py-28">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid gap-8 lg:grid-cols-[1.25fr_.75fr] lg:items-end">
+            <div><p className="text-xs font-bold uppercase tracking-[.14em] text-tag-royal">Why TAG exists</p><h2 className="mt-4 max-w-3xl text-4xl font-bold leading-[.98] sm:text-5xl">Talent is everywhere. Opportunity isn&apos;t, yet.</h2></div>
+            <p className="max-w-md text-sm leading-6 text-tag-text-body">We name the barriers honestly so we can build the bridge across them.</p>
+          </div>
+          <div className="mt-12 divide-y divide-tag-line border-y border-tag-line">
+            {responses.map(([problem, response]) => (
+              <div className="grid gap-3 py-5 text-sm sm:grid-cols-[1fr_auto_1fr] sm:items-center" key={problem}>
+                <p className="text-tag-text-muted">{problem}</p>
+                <ArrowRight aria-hidden="true" className="hidden size-4 text-tag-gold sm:block" />
+                <p className="font-bold text-tag-midnight">{response}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-    <section className="px-5 py-20 lg:px-8 lg:py-24"><Heading eyebrow="The TAG DNA" title="Our Core Values" copy="The timeless values that bind our mentorship, training sessions, and generational community." /><div className="mx-auto mt-11 grid max-w-7xl gap-4 sm:grid-cols-2 lg:grid-cols-3">{values.map(([title, copy], index) => <article className="rounded-md bg-slate-50 p-6" key={title}><span className="grid size-9 place-items-center rounded-md bg-primary text-xs font-black text-white">{index + 1}</span><h3 className="mt-5 text-sm font-black">{title}</h3><p className="mt-3 text-xs leading-6 text-slate-500">{copy}</p></article>)}</div></section>
+      <section className="px-5 py-20 lg:px-8 lg:py-28">
+        <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[.95fr_1.05fr] lg:items-center">
+          <div className="relative aspect-[4/5] max-h-[600px] overflow-hidden rounded-[999px_999px_1.5rem_1.5rem] bg-tag-girls-photo">
+            <Image alt="A reflective TAG mentoring moment" className="object-cover" fill sizes="(max-width:1024px) 100vw, 46vw" src="/images/tag-training-student.png" />
+            <div className="absolute inset-0 bg-tag-midnight/10" />
+            <p className="absolute bottom-5 left-5 right-5 text-xs font-semibold text-white drop-shadow">Quiet, reflective moment rooted in prayer, devotion and lifelong hope.</p>
+          </div>
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[.14em] text-tag-royal">† Our Christian foundation</p>
+            <h2 className="mt-4 max-w-2xl text-4xl font-bold leading-[.98] sm:text-5xl">Rooted in faith. Open-hearted to every young person.</h2>
+            <div className="mt-6 space-y-4 text-base leading-7 text-tag-text-body">
+              <p>Everything we do flows from our Christian faith. We believe every young person is created with purpose, and we want to help them discover their identity and purpose in Christ Jesus.</p>
+              <p>That faith shapes how we mentor: with love, patience, integrity and hope. Young people are welcomed as they are, and encouraged to grow into who they were created to be.</p>
+            </div>
+            <div className="mt-8 rounded-lg border border-tag-line bg-white p-4 text-sm text-tag-text-muted">Guiding scripture verse and reference</div>
+          </div>
+        </div>
+      </section>
 
-    <section className="bg-slate-50 px-5 py-20 lg:px-8 lg:py-24"><Heading eyebrow="The methodology" title="The 5 Pillars of TAG Growth" copy="Our integrated curriculum advances the whole teenager: fostering mind, spirit, character, and future career." /><div className="mx-auto mt-11 grid max-w-7xl gap-4 sm:grid-cols-2 lg:grid-cols-5">{pillars.map(([number, title, copy]) => <article className={`${card} text-center`} key={title}><span className="mx-auto grid size-10 place-items-center rounded-full bg-blue-50 text-xs font-black text-primary">{number}</span><h3 className="mt-5 text-sm font-black">{title}</h3><p className="mt-3 text-[.68rem] leading-5 text-slate-500">{copy}</p></article>)}</div><div className="mx-auto mt-12 flex max-w-7xl flex-col items-start gap-5 rounded-lg border border-blue-100 bg-blue-50 p-6 sm:flex-row sm:items-center sm:justify-between"><div><p className="text-sm font-black">Safeguarding & Trust First</p><p className="mt-2 max-w-3xl text-xs leading-6 text-slate-500">All TAG mentors undergo rigorous background vetting, identity verification, and safeguarding training.</p></div><Link className="shrink-0 rounded-md border border-blue-200 bg-white px-4 py-2.5 text-xs font-black text-primary" href="#contact">Read our safeguarding policy</Link></div></section>
+      <section className="bg-tag-midnight px-5 py-20 text-tag-cream lg:px-8 lg:py-28">
+        <div className="mx-auto max-w-7xl">
+          <p className="text-xs font-bold uppercase tracking-[.14em] text-tag-gold">Our values</p>
+          <h2 className="mt-4 text-4xl font-bold sm:text-5xl">What we stand on.</h2>
+          <div className="mt-12 grid overflow-hidden rounded-xl border border-white/10 sm:grid-cols-2 lg:grid-cols-4">
+            {values.map(([number, title, copy], index) => (
+              <article className={index === 4 ? "bg-tag-gold p-6 text-tag-midnight" : "border-b border-white/10 p-6 sm:border-r lg:[&:nth-child(4n)]:border-r-0 lg:[&:nth-child(n+5)]:border-b-0"} key={title}>
+                <p className={index === 4 ? "text-xs font-bold text-tag-girls-deep" : "text-xs font-bold text-tag-gold"}>{number}</p>
+                <h3 className="mt-5 text-xl font-bold">{title}</h3>
+                <p className={index === 4 ? "mt-3 text-sm leading-6 text-tag-text-body" : "mt-3 text-sm leading-6 text-tag-text-on-dark-body"}>{copy}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
 
-    <section className="bg-primary px-5 py-16 text-center text-white lg:px-8"><div className="mx-auto max-w-3xl"><p className="text-[.65rem] font-black uppercase tracking-[.18em] text-blue-200">Join the movement</p><h2 className="mt-4 text-3xl font-black sm:text-4xl">Be Part of the TAG Story</h2><p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-blue-100">Whether you are a teenager seeking mentorship, an educator, or a professional eager to sow into the next generation, there is a seat for you at TAG.</p><div className="mt-8 flex flex-wrap justify-center gap-3"><Link className="rounded-md bg-white px-5 py-3 text-sm font-black text-primary" href="/#programs">Join a Programme</Link><Link className="rounded-md border border-white/60 px-5 py-3 text-sm font-black" href="#contact">Become a Mentor / Partner</Link></div></div></section>
+      <section className="px-5 py-20 lg:px-8 lg:py-28">
+        <div className="mx-auto grid max-w-7xl gap-10 rounded-2xl bg-white p-7 shadow-elev-card sm:p-10 lg:grid-cols-[.85fr_1.15fr] lg:p-12">
+          <div>
+            <span className="grid size-11 place-items-center rounded-lg bg-tag-boys-tint text-tag-royal"><ShieldCheck aria-hidden="true" /></span>
+            <h2 className="mt-6 text-3xl font-bold sm:text-4xl">How we keep young people safe</h2>
+            <p className="mt-4 max-w-lg text-base leading-7 text-tag-text-body">Parents trust us with what matters most. Safeguarding is built into every programme, session and mentor relationship.</p>
+            <Link className={buttonVariants({ className: "mt-7", size: "sm", variant: "dark" })} href="/contact">Read our Safeguarding Policy</Link>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {safety.map(([title, copy], index) => <article className={index === 0 ? "rounded-lg bg-tag-gold-soft p-5" : "rounded-lg bg-tag-cream p-5"} key={title}><h3 className="text-base font-bold">{title}</h3><p className="mt-2 text-sm leading-6 text-tag-text-body">{copy}</p></article>)}
+          </div>
+        </div>
+      </section>
 
-    <footer id="contact" className="bg-white px-5 py-12 lg:px-8"><div className="mx-auto grid max-w-7xl gap-10 sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1fr]"><div><Link className="text-xl font-black text-primary" href="/">TAG</Link><p className="mt-4 max-w-xs text-xs leading-6 text-slate-500">Purposeful minds ready to lead by conviction.<br />© 2026 Teens Academy Global.</p></div><div><p className="footer-title">Explore</p><Link href="/">Home</Link><Link href="/about">About</Link><Link href="/#programs">Programs</Link></div><div><p className="footer-title">Engage</p><Link href="/mentors">Our Mentors</Link><Link href="/conferences">Conferences</Link><Link href="/contact">Partnership</Link></div><div><p className="footer-title">Legal</p><Link href="#">Privacy Policy</Link><Link href="#">Terms of Service</Link><Link href="#">Safeguarding</Link></div></div></footer>
-  </main>;
+      <section className="px-5 pb-20 lg:px-8 lg:pb-28">
+        <div className="mx-auto flex max-w-7xl flex-col gap-6 rounded-2xl bg-tag-royal px-7 py-8 text-white sm:flex-row sm:items-center sm:justify-between sm:px-10">
+          <h2 className="text-3xl font-bold">Be part of the story.</h2>
+          <div className="flex flex-col gap-3 sm:flex-row"><Link className={buttonVariants({ size: "sm", variant: "accent" })} href="/#programmes">Join TAG</Link><Link className={buttonVariants({ size: "sm", variant: "outline-inverse" })} href="/contact">Partner With TAG</Link></div>
+        </div>
+      </section>
+
+      <footer className="bg-tag-midnight px-5 pb-8 pt-14 text-tag-cream lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid gap-10 md:grid-cols-[1.4fr_repeat(4,1fr)]">
+            <div><BrandLogo placement="footer" /><p className="mt-4 max-w-xs text-sm leading-6 text-tag-text-on-dark-body">Helping teenagers and young adults discover who they are, realise what is possible, and gain the guidance and opportunities to become who they were created to be.</p></div>
+            {footerColumns.map(([title, links]) => <div key={title as string}><p className="text-xs font-bold uppercase tracking-[.12em] text-tag-gold">{title}</p><div className="mt-4 space-y-3">{(links as string[]).map((label) => <Link className="text-sm text-tag-text-on-dark-body hover:text-white" href="/contact" key={label}>{label}</Link>)}</div></div>)}
+          </div>
+          <div className="mt-12 flex flex-col gap-4 rounded-lg border border-white/10 bg-white/5 px-5 py-4 text-xs text-tag-text-on-dark-body sm:flex-row sm:items-center sm:justify-between"><span className="flex items-center gap-2"><ShieldCheck aria-hidden="true" className="size-4 text-tag-gold" />Safeguarding comes first. Every mentor is vetted and trained before working with young people.</span><Link className="font-bold text-tag-gold" href="/contact">Read our safeguarding approach <ArrowRight aria-hidden="true" className="ml-1 inline size-3.5" /></Link></div>
+          <div className="mt-8 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-tag-text-on-dark-muted sm:flex-row sm:items-center sm:justify-between"><p>© 2026 Teens Academy Global. All rights reserved.</p><div className="flex gap-5"><Link href="#">Privacy Policy</Link><Link href="#">Terms</Link><Link href="#">Safeguarding Policy</Link></div></div>
+        </div>
+      </footer>
+    </main>
+  );
 }
