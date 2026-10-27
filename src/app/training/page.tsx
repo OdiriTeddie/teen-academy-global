@@ -1,27 +1,77 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
+import { ArrowRight, ShieldCheck, Video } from "lucide-react";
+import { BrandLogo } from "@/components/brand-logo";
 import { SiteHeader } from "@/components/site-header";
-import { Button } from "@/components/ui/button";
-import { Play } from "lucide-react";
+import { TrainingLibrary } from "@/components/training-library";
+import { buttonVariants } from "@/components/ui/button";
 
-export const metadata: Metadata = { title: "Training | Teens Academy Global", description: "Masterclasses, workshops, and practical training for young people." };
+export const metadata: Metadata = {
+  title: "Trainings | Teens Academy Global",
+  description: "Practical teaching, training sessions, and career guidance for young people.",
+};
 
-const resources = [
-  ["Technology", "Introduction to Future Tech & AI Ethics", "Understanding the moral implications of building tomorrow's technology today.", "12:45", "0%"],
-  ["Leadership", "Finding Your Voice in Crowded Rooms", "Practical strategies for establishing presence, authority, and authentic influence.", "45:20", "50%"],
-  ["Career", "Resume Structuring for Impact", "A rapid guide to formatting your experience to catch a recruiter's eye.", "08:15", "100%"],
+const principles = [
+  ["01", "Practical first", "Skills you can use this week, not theory you’ll forget."],
+  ["02", "Taught by practitioners", "Mentors and speakers working in the fields they teach."],
+  ["03", "Rooted in purpose", "Excellence that serves something bigger than ourselves."],
 ];
 
-export default function TrainingPage() { return <main className="bg-white text-secondary"><SiteHeader active="training" />
-  <section className="bg-slate-50 px-5 py-20 lg:px-8 lg:py-28"><div className="mx-auto max-w-7xl"><h1 className="max-w-3xl text-5xl font-black leading-[1.05] sm:text-6xl">Knowledge That Helps Young People Move Forward</h1><p className="mt-6 max-w-2xl text-base leading-8 text-slate-600">Access our curated library of masterclasses, skill-building workshops, and industry insights designed to accelerate your personal and professional growth.</p><div className="mt-12 flex flex-wrap gap-3">{["All Resources", "Career Pathways", "Technology & Tech", "Leadership", "Mental Wellbeing"].map((item,index)=><Button className="rounded-full px-5 text-xs" key={item} variant={index===0?"default":"subtle"}>{item}</Button>)}</div>
-    <div className="mt-10 grid gap-5 lg:grid-cols-3">{resources.map(([category,title,copy,duration,position])=><article className="overflow-hidden rounded-lg border border-slate-200 bg-white" key={title}><div className="relative aspect-[16/9] bg-[url('/images/tag-training-library.png')] bg-[length:300%_auto] bg-no-repeat" style={{backgroundPosition:`${position} center`}}><span className="absolute left-1/2 top-1/2 grid size-14 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white text-primary shadow-lg"><Play aria-hidden="true" className="size-5 fill-current"/></span><span className="absolute bottom-3 right-3 rounded bg-slate-950/80 px-2 py-1 text-[.62rem] font-bold text-white">{duration}</span></div><div className="p-6"><p className="text-[.62rem] font-black uppercase tracking-[.12em] text-primary">{category} · Masterclass</p><h2 className="mt-4 text-xl font-black leading-tight">{title}</h2><p className="mt-3 text-sm leading-6 text-slate-500">{copy}</p></div></article>)}</div><div className="mt-9 text-center"><Button className="text-sm font-black" variant="link">Explore Full Library →</Button></div></div></section>
+const footerColumns = [
+  ["Explore", ["About", "Mentors", "Trainings", "Conferences", "Testimonials", "Contact"]],
+  ["Programmes", ["Boys Mentoring Hub", "Girls Mentorship Hub", "Apply now"]],
+  ["Get involved", ["Become a mentor", "Volunteer", "Partner with TAG", "Donate"]],
+  ["Connect", ["Instagram", "YouTube", "WhatsApp Channel"]],
+];
 
-  <section className="px-5 py-20 lg:px-8 lg:py-24"><div className="mx-auto max-w-7xl"><div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between"><div><h2 className="text-3xl font-black sm:text-4xl">Real Stories. Real Growth.</h2><p className="mt-4 max-w-2xl text-base leading-7 text-slate-500">Hear directly from the young people accelerating their potential, and the parents supporting their journey.</p></div><div className="inline-flex self-start rounded-full bg-slate-100 p-1 text-xs font-bold"><Button className="rounded-full px-5">Young People</Button><Button className="rounded-full px-5 py-2" variant="subtle">Parents & Guardians</Button></div></div>
-    <div className="mt-12 grid gap-5 lg:grid-cols-3"><blockquote className="rounded-lg bg-slate-50 p-8"><span className="text-5xl font-black text-slate-200">”</span><p className="mt-5 text-xl font-semibold leading-8">Before joining the academy, I wasn&apos;t sure how to translate my interest in coding into an actual career path. The mentorship here completely shifted my perspective.</p><footer className="mt-8 flex items-center gap-3"><span className="grid size-10 place-items-center rounded-full bg-primary text-xs font-black text-white">MJ</span><span className="text-xs font-black">Marcus Johnson<small className="block font-normal text-slate-500">Alumni, Tech Innovators Program</small></span></footer></blockquote>
-      <figure className="overflow-hidden rounded-lg bg-slate-50"><div className="relative aspect-[4/5]"><Image alt="TAG learner Sarah Chen" className="object-cover" fill sizes="(max-width:1024px) 100vw, 33vw" src="/images/tag-training-student.png" /></div><figcaption className="p-7"><p className="text-base italic leading-7">“The network you build here is incredible. I&apos;m still in touch with my mentor weekly, and the confidence I&apos;ve gained is immeasurable.”</p><p className="mt-5 text-xs font-black">Sarah Chen <span className="block font-normal text-slate-500">Current Student</span></p></figcaption></figure>
-      <div className="grid gap-5"><blockquote className="rounded-lg bg-primary p-8 text-white"><span className="text-5xl font-black text-blue-300">”</span><p className="mt-4 text-xl font-semibold leading-8">A truly transformative environment that demands excellence while providing unwavering support. It&apos;s rare to find this balance.</p><footer className="mt-7 text-xs font-black">David Okafor <span className="block font-normal text-blue-200">Leadership Cohort &apos;23</span></footer></blockquote><blockquote className="rounded-lg bg-slate-50 p-8"><p className="text-sm leading-7 text-slate-600">“I applied for the enterprise program just to see what would happen. Nine months later, I&apos;ve successfully pitched my startup idea to a room full of real investors.”</p><footer className="mt-7 border-t border-slate-200 pt-5 text-xs font-black">Emma Lewis <span className="block font-normal text-slate-500">Young Entrepreneur Award Winner</span></footer></blockquote></div>
-    </div></div></section>
+export default function TrainingPage() {
+  return (
+    <main className="bg-tag-cream text-tag-text">
+      <SiteHeader active="training" />
 
-  <footer id="contact" className="border-t border-slate-100 bg-white px-5 py-12 lg:px-8"><div className="mx-auto grid max-w-7xl gap-10 sm:grid-cols-2 lg:grid-cols-4"><div><Link className="text-xl font-black text-primary" href="/">TAG</Link><p className="mt-5 max-w-xs text-sm leading-6 text-slate-500">Potential should never be limited by circumstance.</p></div><div><p className="footer-title">Explore</p><Link href="/">Home</Link><Link href="/#programs">Programs</Link><Link href="/training">Training</Link><Link href="/mentors">Mentors</Link></div><div><p className="footer-title">Connect</p><Link href="/conferences">Conferences</Link><Link href="#">Testimonials</Link><Link href="#">Safeguarding</Link></div><div><p className="footer-title">Legal</p><Link href="#">Privacy Policy</Link><Link href="#">Terms of Service</Link></div></div><p className="mx-auto mt-12 max-w-7xl border-t border-slate-100 pt-7 text-center text-xs text-slate-500">© 2026 Teens Academy Global.</p></footer>
-</main>; }
+      <section className="relative overflow-hidden px-5 py-12 lg:px-8 lg:py-20">
+        <div aria-hidden="true" className="pointer-events-none absolute -right-12 top-10 font-heading text-[13rem] font-bold leading-none text-transparent [-webkit-text-stroke:1px_var(--color-tag-line)]">GROW</div>
+        <div className="relative mx-auto max-w-7xl">
+          <nav aria-label="Breadcrumb" className="text-xs text-tag-text-muted"><Link href="/">Home</Link><span className="mx-2">/</span><strong className="text-tag-midnight">Teaching &amp; Training</strong></nav>
+          <div className="mt-10 grid items-end gap-10 lg:grid-cols-[1.4fr_.6fr]">
+            <div>
+              <h1 className="max-w-4xl text-[clamp(3.4rem,7vw,6.7rem)] font-bold leading-[.88] tracking-[-.055em]">Knowledge that helps young people move forward</h1>
+              <p className="mt-8 max-w-2xl text-base leading-7 text-tag-text-body">Practical teaching from people who&apos;ve walked the road: careers, technology, money, leadership and faith. Free to watch, built to be used.</p>
+            </div>
+            <aside className="rounded-2xl bg-tag-midnight p-7 text-tag-cream shadow-elev-card">
+              <div className="flex items-center gap-3"><span className="grid size-11 place-items-center rounded-lg bg-red-600"><Video aria-hidden="true" className="size-6" /></span><div><p className="font-bold">TAG on YouTube</p><p className="text-xs text-tag-text-on-dark-muted">@channel handle</p></div></div>
+              <p className="mt-5 text-sm leading-6 text-tag-text-on-dark-body">New sessions, conference talks and short lessons every fortnight.</p>
+              <Link className="mt-5 inline-flex items-center gap-1 text-sm font-bold text-tag-gold" href="#library">Visit Our YouTube Channel <ArrowRight aria-hidden="true" className="size-4" /></Link>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-y border-tag-line bg-white px-5 py-9 lg:px-8">
+        <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-3">
+          {principles.map(([number, title, copy]) => <article className="grid grid-cols-[auto_1fr] gap-4" key={number}><span className="text-3xl font-bold text-tag-gold">{number}</span><div><h2 className="font-bold">{title}</h2><p className="mt-1 text-sm leading-5 text-tag-text-muted">{copy}</p></div></article>)}
+        </div>
+      </section>
+
+      <div id="library"><TrainingLibrary /></div>
+
+      <section className="px-5 pb-5 lg:px-8 lg:pb-8">
+        <div className="mx-auto flex max-w-7xl flex-col gap-8 rounded-2xl bg-tag-midnight px-7 py-12 text-tag-cream shadow-elev-card sm:px-12 lg:flex-row lg:items-center lg:justify-between lg:py-16">
+          <div><h2 className="text-4xl font-bold tracking-[-.035em] sm:text-5xl">Learn with us every week.</h2><p className="mt-4 max-w-xl text-sm leading-6 text-tag-text-on-dark-body">Subscribe on YouTube to catch every new session and conference talk as it drops.</p></div>
+          <Link className={buttonVariants({ variant: "accent" })} href="#library"><Video aria-hidden="true" />Visit Our YouTube Channel</Link>
+        </div>
+      </section>
+
+      <footer className="bg-tag-midnight px-5 pb-8 pt-14 text-tag-cream lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid gap-10 md:grid-cols-[1.4fr_repeat(4,1fr)]">
+            <div><BrandLogo placement="footer" /><p className="mt-4 max-w-xs text-sm leading-6 text-tag-text-on-dark-body">Helping teenagers and young adults discover who they are, realise what is possible, and gain the guidance and opportunities to become who they were created to be.</p></div>
+            {footerColumns.map(([title, links]) => <div key={title as string}><p className="text-xs font-bold uppercase tracking-[.12em] text-tag-gold">{title}</p><div className="mt-4 grid gap-3">{(links as string[]).map((label) => <Link className="text-sm text-tag-text-on-dark-body hover:text-white" href="/contact" key={label}>{label}</Link>)}</div></div>)}
+          </div>
+          <div className="mt-12 flex flex-col gap-4 rounded-lg border border-white/10 bg-white/5 px-5 py-4 text-xs text-tag-text-on-dark-body sm:flex-row sm:items-center sm:justify-between"><span className="flex items-center gap-2"><ShieldCheck aria-hidden="true" className="size-4 text-tag-gold" />Safeguarding comes first. Every mentor is vetted and trained before working with young people.</span><Link className="font-bold text-tag-gold" href="/contact">Read our safeguarding approach <ArrowRight aria-hidden="true" className="ml-1 inline size-3.5" /></Link></div>
+          <div className="mt-8 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-tag-text-on-dark-muted sm:flex-row sm:items-center sm:justify-between"><p>© 2026 Teens Academy Global. All rights reserved.</p><div className="flex gap-5"><Link href="#">Privacy Policy</Link><Link href="#">Terms</Link><Link href="#">Safeguarding Policy</Link></div></div>
+        </div>
+      </footer>
+    </main>
+  );
+}
