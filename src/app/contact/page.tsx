@@ -1,32 +1,78 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
+import { ArrowRight, Camera, Mail, MessageCircle, ShieldCheck } from "lucide-react";
+import { BrandLogo } from "@/components/brand-logo";
+import { ContactForm } from "@/components/contact-form";
 import { SiteHeader } from "@/components/site-header";
-import { Button } from "@/components/ui/button";
-import { Clock3, Mail, MessageCircle, School, ShieldCheck, UserRoundSearch, Users } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { buttonVariants } from "@/components/ui/button";
 
-export const metadata: Metadata = { title: "Contact | Teens Academy Global", description: "Contact TAG about programmes, mentorship, partnerships, and support." };
+export const metadata: Metadata = {
+  title: "Contact | Teens Academy Global",
+  description: "Contact Teens Academy Global about programmes, mentorship, partnerships, and support.",
+};
 
-const field = "mt-2 h-11 w-full rounded-md border border-slate-300 bg-white px-3 text-sm outline-none transition focus:border-primary focus:ring-4 focus:ring-blue-100";
+const footerColumns = [
+  ["Explore", ["About", "Mentors", "Trainings", "Conferences", "Testimonials", "Contact"]],
+  ["Programmes", ["Boys Mentoring Hub", "Girls Mentorship Hub", "Apply now"]],
+  ["Get involved", ["Become a mentor", "Volunteer", "Partner with TAG", "Donate"]],
+  ["Connect", ["Instagram", "YouTube", "WhatsApp Channel"]],
+];
 
-const supportIcons = [Users, School, UserRoundSearch];
+export default function ContactPage() {
+  return (
+    <main className="bg-tag-cream text-tag-text">
+      <SiteHeader active="contact" />
 
-export default function ContactPage() { return <main className="bg-white text-secondary"><SiteHeader active="contact" />
-  <section className="bg-[linear-gradient(110deg,#eef2ff_0%,#f8fafc_58%,#fff7ed_100%)] px-5 py-20 lg:px-8"><div className="mx-auto max-w-7xl"><p className="inline-flex rounded-full bg-white/80 px-3 py-1.5 text-[.65rem] font-black uppercase tracking-[.14em] text-primary">Connect with our team</p><h1 className="mt-7 text-4xl font-black sm:text-5xl">We&apos;d Love to Hear From You</h1><p className="mt-5 max-w-3xl text-base leading-8 text-slate-600">Whether you&apos;re an ambitious young person seeking guidance, a parent with questions, a prospective mentor, or a school or partner looking to collaborate, we&apos;re here to walk with you.</p><div className="mt-7 flex flex-wrap gap-6 text-xs font-bold text-slate-600"><span className="inline-flex items-center gap-2"><Clock3 aria-hidden="true" className="size-4 text-primary"/>Typical response window: 24–48 hours</span><span className="inline-flex items-center gap-2"><ShieldCheck aria-hidden="true" className="size-4 text-primary"/>Safeguarding accredited staff & mentors</span></div></div></section>
+      <section className="px-5 pb-12 pt-10 lg:px-8 lg:pb-16">
+        <div className="mx-auto max-w-7xl">
+          <nav aria-label="Breadcrumb" className="text-xs text-tag-text-muted"><Link href="/">Home</Link><span className="mx-2">/</span><strong className="text-tag-midnight">Contact</strong></nav>
+          <h1 className="mt-12 max-w-4xl text-[clamp(3.5rem,7vw,7rem)] font-bold leading-[.88] tracking-[-.055em]">We&apos;d love to hear from you</h1>
+          <p className="mt-8 max-w-3xl text-lg leading-8 text-tag-text-body">Whether you&apos;re a young person, a parent, a school or a potential partner, reach out. We usually reply within 2 working days.</p>
+        </div>
+      </section>
 
-  <section className="bg-slate-50 px-5 py-20 lg:px-8 lg:py-24"><div className="mx-auto grid max-w-7xl items-start gap-10 lg:grid-cols-[.72fr_1.28fr]"><div><p className="eyebrow text-left">Direct access</p><h2 className="mt-2 text-2xl font-black">Regional Hubs & Channels</h2><div className="mt-8 space-y-4">
-    <article className="rounded-lg bg-white p-6 shadow-[0_8px_30px_rgba(15,23,42,.04)]"><div className="flex gap-4"><span className="grid size-10 shrink-0 place-items-center rounded-md bg-blue-50 text-primary"><Mail aria-hidden="true" className="size-5"/></span><div><div className="flex flex-wrap items-center gap-2"><h3 className="text-sm font-black">General Enquiries</h3><span className="rounded-full bg-slate-100 px-2 py-1 text-[.55rem]">Global</span></div><a className="mt-1 block text-xs font-bold text-primary" href="mailto:hello@teensacademyglobal.org">hello@teensacademyglobal.org</a><p className="mt-4 text-xs leading-6 text-slate-500">For partnership proposals, general questions, media, and school collaborations. Typically answered within 24–48 hours.</p><a className="mt-4 inline-flex text-xs font-black text-primary" href="mailto:hello@teensacademyglobal.org">Send an Email →</a></div></div></article>
-    <article className="rounded-lg bg-white p-6 shadow-[0_8px_30px_rgba(15,23,42,.04)]"><div className="flex gap-4"><span className="grid size-10 shrink-0 place-items-center rounded-md bg-blue-50 text-primary"><MessageCircle aria-hidden="true" className="size-5"/></span><div><div className="flex flex-wrap items-center gap-2"><h3 className="text-sm font-black">Nigeria Office & Cohorts</h3><span className="rounded-full bg-amber-100 px-2 py-1 text-[.55rem] text-amber-800">WhatsApp only</span></div><p className="mt-1 text-xs font-bold">+234 812 345 6789</p><p className="mt-4 text-xs leading-6 text-slate-500">For families, teens, and community partners in Lagos, Abuja, and across Nigeria.</p><a className="mt-4 inline-flex rounded-md bg-slate-100 px-4 py-2 text-xs font-black" href="https://wa.me/2348123456789">Chat on WhatsApp</a></div></div></article>
-    <article className="rounded-lg bg-white p-6 shadow-[0_8px_30px_rgba(15,23,42,.04)]"><div className="flex gap-4"><span className="grid size-10 shrink-0 place-items-center rounded-md bg-blue-50 text-primary"><MessageCircle aria-hidden="true" className="size-5"/></span><div><div className="flex flex-wrap items-center gap-2"><h3 className="text-sm font-black">United Kingdom Hub</h3><span className="rounded-full bg-amber-100 px-2 py-1 text-[.55rem] text-amber-800">WhatsApp only</span></div><p className="mt-1 text-xs font-bold">+44 7911 123456</p><p className="mt-4 text-xs leading-6 text-slate-500">For UK-based mentoring hubs, university masterclasses, and parent consultations.</p><a className="mt-4 inline-flex rounded-md bg-slate-100 px-4 py-2 text-xs font-black" href="https://wa.me/447911123456">Chat on WhatsApp</a></div></div></article>
-    <article className="rounded-lg bg-primary p-7 text-white"><p className="text-[.62rem] font-black uppercase tracking-[.14em] text-blue-200">Network & alerts</p><h3 className="mt-3 text-2xl font-black">Join Our Global Broadcast Channel</h3><p className="mt-3 text-xs leading-6 text-blue-100">Join over 4,500 young visionaries, parents, and mentors receiving weekly inspiration, event drops, and cohort announcements.</p><div className="mt-5 flex flex-wrap gap-2"><Button className="text-xs" variant="accent">Join Channel</Button><span className="rounded-md border border-white/30 px-4 py-2.5 text-xs font-bold">@teensacademyglobal</span></div></article>
-  </div></div>
+      <section className="px-5 pb-24 lg:px-8 lg:pb-32">
+        <div className="mx-auto grid max-w-7xl items-start gap-8 lg:grid-cols-[.8fr_1.2fr]">
+          <div className="space-y-4">
+            <article className="flex items-center gap-4 rounded-xl border border-tag-line bg-white p-6">
+              <span className="grid size-12 shrink-0 place-items-center rounded-lg bg-tag-text-on-royal text-tag-royal"><Mail aria-hidden="true" className="size-5" /></span>
+              <div><h2 className="font-bold">General enquiries</h2><a className="text-sm font-semibold text-tag-royal underline" href="mailto:hello@teensacademyglobal.org">hello@teensacademyglobal.org</a></div>
+            </article>
 
-  <form className="rounded-lg bg-white p-6 shadow-[0_12px_45px_rgba(15,23,42,.05)] sm:p-10"><p className="eyebrow text-left">Direct submission</p><h2 className="mt-2 text-3xl font-black">Send Us a Message</h2><p className="mt-2 text-sm text-slate-500">Fill in the details below and the right department will respond promptly.</p><div className="mt-8 grid gap-5 sm:grid-cols-2"><label className="text-xs font-bold">Full Name <span className="text-red-600">*</span><input className={field} name="name" placeholder="e.g. Samuel Adebayo" required /></label><label className="text-xs font-bold">Email Address <span className="text-red-600">*</span><input className={field} name="email" placeholder="e.g. samuel@example.com" required type="email" /></label></div><label className="mt-5 block text-xs font-bold">Phone Number <span className="float-right font-normal text-slate-400">Optional</span><input className={field} name="phone" placeholder="e.g. +234 800 000 0000" type="tel" /></label><fieldset className="mt-6"><legend className="text-xs font-bold">I am a... <span className="text-red-600">*</span></legend><div className="mt-3 grid gap-2 sm:grid-cols-3">{["Teen / Young Adult", "Parent or Guardian", "Prospective Mentor", "School or Educator", "Partner / Sponsor", "Other Inquirer"].map((item,index)=><label className={`rounded-md px-3 py-2.5 text-center text-[.65rem] font-bold ${index===0?"bg-primary text-white":"bg-slate-100 text-slate-600"}`} key={item}><input className="sr-only" defaultChecked={index===0} name="audience" type="radio" value={item} />{item}</label>)}</div></fieldset><label className="mt-6 block text-xs font-bold">Enquiry Subject <span className="text-red-600">*</span><select className={field} defaultValue="" name="subject" required><option disabled value="">Select an enquiry topic...</option><option>Programme application</option><option>Mentorship</option><option>School partnership</option><option>Sponsorship</option><option>Safeguarding</option><option>General enquiry</option></select></label><label className="mt-6 block text-xs font-bold">Your Message <span className="text-red-600">*</span><textarea className="mt-2 min-h-40 w-full rounded-md border border-slate-300 p-3 text-sm outline-none focus:border-primary focus:ring-4 focus:ring-blue-100" name="message" placeholder="Tell us a bit about yourself and how we can support you..." required /></label><div className="mt-6 rounded-md bg-slate-50 p-4 text-[.65rem] leading-5 text-slate-500"><strong className="text-secondary">Safeguarding & Privacy Commitment:</strong> Your information is treated with strict confidentiality and stored securely under applicable data protection policies.</div><Button className="mt-6" size="xl" type="submit">Send Message →</Button></form>
-  </div></section>
+            <article className="rounded-xl border border-tag-line bg-white p-6">
+              <div className="flex flex-wrap items-center justify-between gap-3"><h2 className="font-bold">WhatsApp</h2><Badge variant="success"><MessageCircle aria-hidden="true" className="size-3" />WhatsApp messages only, no calls</Badge></div>
+              <div className="mt-5 grid gap-3">
+                <div className="flex items-center justify-between gap-4 rounded-lg bg-tag-cream p-4"><div><p className="text-[11px] font-bold uppercase tracking-[.12em] text-tag-text-muted">Nigeria</p><p className="font-bold">+234 WhatsApp number</p></div><a className="shrink-0 text-sm font-bold text-tag-success" href="https://wa.me/2340000000000">Message <ArrowRight aria-hidden="true" className="inline size-3.5" /></a></div>
+                <div className="flex items-center justify-between gap-4 rounded-lg bg-tag-cream p-4"><div><p className="text-[11px] font-bold uppercase tracking-[.12em] text-tag-text-muted">United Kingdom</p><p className="font-bold">+44 WhatsApp number</p></div><a className="shrink-0 text-sm font-bold text-tag-success" href="https://wa.me/440000000000">Message <ArrowRight aria-hidden="true" className="inline size-3.5" /></a></div>
+              </div>
+            </article>
 
-  <section className="px-5 py-20 lg:px-8 lg:py-24"><div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2"><div><p className="eyebrow text-left">A global movement</p><h2 className="section-title text-left">Empowering Young Visionaries Across Borders</h2><p className="mt-5 text-sm leading-7 text-slate-500">Teens Academy Global bridges the gap between raw ambition and world-class mastery. Through cohort mentorships, leadership summits, and school programmes, we develop character, technical literacy, and high-impact agency.</p><div className="mt-7 grid grid-cols-3 gap-4"><div><strong className="text-2xl text-primary">12+</strong><span className="block text-[.65rem] text-slate-500">Countries reached</span></div><div><strong className="text-2xl text-primary">850+</strong><span className="block text-[.65rem] text-slate-500">Teens mentored</span></div><div><strong className="text-2xl text-primary">98%</strong><span className="block text-[.65rem] text-slate-500">Parent approval</span></div></div></div><div className="relative aspect-[16/9] overflow-hidden rounded-lg"><Image alt="TAG youth collaborating with mentors" className="object-cover" fill sizes="(max-width:1024px) 100vw, 50vw" src="/images/tag-about-community.png" /></div></div></section>
+            <article className="rounded-xl bg-tag-midnight p-7 text-tag-cream">
+              <h2 className="text-2xl font-bold">Join our WhatsApp community</h2>
+              <p className="mt-3 text-sm leading-6 text-tag-text-on-dark-body">Updates on programmes, events and opportunities, straight to your phone.</p>
+              <a className={buttonVariants({ className: "mt-6", size: "sm", variant: "accent" })} href="#"><MessageCircle aria-hidden="true" />Join Our WhatsApp Channel</a>
+            </article>
 
-  <section className="bg-slate-50 px-5 py-20 lg:px-8"><div className="mx-auto max-w-7xl"><p className="eyebrow">Direct pathways</p><h2 className="section-title">Specialized Support Channels</h2><div className="mt-10 grid gap-5 lg:grid-cols-3">{[["Parent & Guardian Support", "Need reassurance on mentor vetting, pastoral care, and curriculum progression?", "Request Info Pack"], ["Schools & Youth Groups", "Explore how we co-design leadership assemblies, vocational immersions, and clubs.", "Institutional Enquiries"], ["Mentorship Inquiries", "Join our global faculty of executive mentors and industry creators.", "Apply to Mentor"]].map(([title,copy,action],index)=>{const Icon=supportIcons[index];return <article className="rounded-lg bg-white p-7" key={title}><span className={`grid size-10 place-items-center rounded-md ${index===1?"bg-amber-100 text-amber-700":"bg-blue-100 text-primary"}`}><Icon aria-hidden="true" className="size-5"/></span><h3 className="mt-5 text-lg font-black">{title}</h3><p className="mt-3 min-h-16 text-xs leading-6 text-slate-500">{copy}</p><a className="mt-6 inline-flex text-xs font-black text-primary" href="#">{action} →</a></article>})}</div></div></section>
+            <article className="flex items-center gap-4 rounded-xl border border-tag-line bg-white p-6">
+              <Camera aria-hidden="true" className="size-6 text-tag-girls" /><div><h2 className="font-bold">Instagram</h2><a className="text-sm text-tag-text-muted" href="#">@teensacademyglobal</a></div>
+            </article>
+          </div>
 
-  <footer className="bg-white px-5 py-12 lg:px-8"><div className="mx-auto grid max-w-7xl gap-10 sm:grid-cols-2 lg:grid-cols-4"><div><Link className="text-xl font-black text-primary" href="/">TAG</Link><p className="mt-4 max-w-xs text-xs leading-6 text-slate-500">© 2026 Teens Academy Global.<br />Potential should never be limited by circumstance.</p></div><div><p className="footer-title">Explore</p><Link href="/">Home</Link><Link href="/about">About</Link><Link href="/mentors">Mentors</Link><Link href="/#programs">Programs</Link></div><div><p className="footer-title">Connect</p><Link href="/training">Training</Link><Link href="/conferences">Conferences</Link><Link href="/contact">Contact</Link></div><div><p className="footer-title">Legal</p><Link href="#">Privacy Policy</Link><Link href="#">Terms of Service</Link><Link href="#">Safeguarding</Link></div></div></footer>
-</main>; }
+          <ContactForm />
+        </div>
+      </section>
+
+      <footer className="bg-tag-midnight px-5 pb-8 pt-14 text-tag-cream lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid gap-10 md:grid-cols-[1.4fr_repeat(4,1fr)]">
+            <div><BrandLogo placement="footer" /><p className="mt-4 max-w-xs text-sm leading-6 text-tag-text-on-dark-body">Helping teenagers and young adults discover who they are, realise what is possible, and gain the guidance and opportunities to become who they were created to be.</p></div>
+            {footerColumns.map(([title, links]) => <div key={title as string}><p className="text-xs font-bold uppercase tracking-[.12em] text-tag-gold">{title}</p><div className="mt-4 grid gap-3">{(links as string[]).map((label) => <Link className="text-sm text-tag-text-on-dark-body hover:text-white" href="/contact" key={label}>{label}</Link>)}</div></div>)}
+          </div>
+          <div className="mt-12 flex flex-col gap-4 rounded-lg border border-white/10 bg-white/5 px-5 py-4 text-xs text-tag-text-on-dark-body sm:flex-row sm:items-center sm:justify-between"><span className="flex items-center gap-2"><ShieldCheck aria-hidden="true" className="size-4 text-tag-gold" />Safeguarding comes first. Every mentor is vetted and trained before working with young people.</span><Link className="font-bold text-tag-gold" href="#">Read our safeguarding approach <ArrowRight aria-hidden="true" className="ml-1 inline size-3.5" /></Link></div>
+          <div className="mt-8 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-tag-text-on-dark-muted sm:flex-row sm:items-center sm:justify-between"><p>© 2026 Teens Academy Global. All rights reserved.</p><div className="flex gap-5"><Link href="#">Privacy Policy</Link><Link href="#">Terms</Link><Link href="#">Safeguarding Policy</Link></div></div>
+        </div>
+      </footer>
+    </main>
+  );
+}
