@@ -61,7 +61,7 @@ export function SiteHeader({ active, overlay = false }: SiteHeaderProps) {
         </nav>
         <Link
           className={buttonVariants({ className: "hidden lg:inline-flex", size: "sm", variant: "accent" })}
-          href="/#programs"
+          href="/apply"
         >
           Join a Programme
         </Link>
@@ -110,7 +110,7 @@ export function SiteHeader({ active, overlay = false }: SiteHeaderProps) {
                 render={
                   <Link
                     className={buttonVariants({ size: "xl", variant: "accent" })}
-                    href="/#programs"
+                    href="/apply"
                   />
                 }
               >
