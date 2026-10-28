@@ -30,6 +30,7 @@ export function ApplicationFlow() {
 
   useEffect(() => {
     const saved = window.localStorage.getItem(storageKey);
+    const requestedProgramme = new URLSearchParams(window.location.search).get("programme");
     const restoreTimer = window.setTimeout(() => {
       if (saved) {
         try {
@@ -38,6 +39,8 @@ export function ApplicationFlow() {
           if (parsed.step && parsed.step >= 1 && parsed.step <= 4) setStep(parsed.step);
         } catch { window.localStorage.removeItem(storageKey); }
       }
+      if (requestedProgramme === "girls") setData((current) => ({ ...current, programme: "Girls Mentorship Hub" }));
+      if (requestedProgramme === "boys") setData((current) => ({ ...current, programme: "Boys Mentoring Hub" }));
       setHydrated(true);
     }, 0);
     return () => window.clearTimeout(restoreTimer);
