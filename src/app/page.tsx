@@ -173,7 +173,7 @@ export default function Home() {
                 <div className="flex flex-wrap gap-2"><Badge variant="gold">9 months</Badge><Badge className="bg-white/15 text-white">Ages 14–18</Badge></div>
                 <h3 className="mt-5 text-3xl font-bold">Boys Mentoring Hub</h3>
                 <p className="mt-3 max-w-xl text-sm leading-6 text-tag-text-on-royal">A Christ-centred journey helping boys build identity, discipline, confidence and vision through mentoring and shared challenge.</p>
-                <Link className={buttonVariants({ className: "mt-7", size: "sm", variant: "inverse" })} href="/contact">Explore Boys Hub <ArrowRight aria-hidden="true" /></Link>
+                <Link className={buttonVariants({ className: "mt-7", size: "sm", variant: "inverse" })} href="/programmes/boys-mentoring-hub">Explore Boys Hub <ArrowRight aria-hidden="true" /></Link>
               </div>
             </article>
 
@@ -301,7 +301,7 @@ export default function Home() {
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-10 md:grid-cols-[1.4fr_repeat(4,1fr)]">
             <div><BrandLogo placement="footer" /><p className="mt-4 max-w-xs text-sm leading-6 text-tag-text-on-dark-body">Potential should never be limited by circumstance. Mentorship, opportunity and Christ-centred guidance for the next generation.</p></div>
-            {footerColumns.map(([title, links]) => <div key={title as string}><p className="text-xs font-bold uppercase tracking-[.12em] text-tag-gold">{title}</p><div className="mt-4 space-y-3">{(links as string[]).map((label) => <Link className="text-sm text-tag-text-on-dark-body hover:text-white" href="/contact" key={label}>{label}</Link>)}</div></div>)}
+            {footerColumns.map(([title, links]) => <div key={title as string}><p className="text-xs font-bold uppercase tracking-[.12em] text-tag-gold">{title}</p><div className="mt-4 space-y-3">{(links as string[]).map((label) => <Link className="text-sm text-tag-text-on-dark-body hover:text-white" href={label === "Boys Mentoring Hub" ? "/programmes/boys-mentoring-hub" : label === "Apply now" ? "/apply" : "/contact"} key={label}>{label}</Link>)}</div></div>)}
           </div>
           <div className="mt-12 flex flex-col gap-4 rounded-lg border border-white/10 bg-white/5 px-5 py-4 text-xs text-tag-text-on-dark-body sm:flex-row sm:items-center sm:justify-between"><span className="flex items-center gap-2"><ShieldCheck aria-hidden="true" className="size-4 text-tag-gold" />Safeguarding comes first. Every mentor is vetted and trained.</span><Link className="font-bold text-tag-gold" href="/contact">Read our safeguarding approach <ArrowRight aria-hidden="true" className="ml-1 inline size-3.5" /></Link></div>
           <div className="mt-8 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-tag-text-on-dark-muted sm:flex-row sm:items-center sm:justify-between"><p>© 2026 Teens Academy Global. All rights reserved.</p><div className="flex gap-5"><Link href="#">Privacy Policy</Link><Link href="#">Terms of Service</Link></div></div>
