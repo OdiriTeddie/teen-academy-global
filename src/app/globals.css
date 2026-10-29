@@ -167,9 +167,6 @@ a { color: inherit; text-decoration: none; }
 .program-card { align-items: flex-start; background: white; border: 1px solid var(--tag-line); border-radius: .875rem; display: grid; gap: 1.25rem; grid-template-columns: auto 1fr; padding: 2rem; }
 .program-mark { border-radius: 999px; display: grid; font-size: .8rem; font-weight: 800; height: 2.5rem; place-items: center; width: 2.5rem; }
 .testimonial { background: var(--tag-white); border: 1px solid var(--tag-line); border-radius: .875rem; padding: 2rem; }
-footer a { color: var(--tag-text-muted); display: block; font-size: .75rem; margin-top: .7rem; }
-.footer-title { color: var(--tag-midnight); font-size: .75rem; font-weight: 800; text-transform: uppercase; }
-footer > div[class*="max-w-7xl"] > div:first-child > :first-child { background: url("/images/tag-logo.png") left center / contain no-repeat; color: transparent; display: block; font-size: 0; height: 5.5rem; margin: 0; width: 9rem; }
 button, input, select, textarea { font: inherit; }
 button { cursor: pointer; }
 ::selection { background: var(--tag-royal); color: white; }
